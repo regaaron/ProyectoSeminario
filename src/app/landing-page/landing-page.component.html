@@ -1,0 +1,160 @@
+<nav class="d-flex justify-content-between align-items-center px-3 py-2">
+  <div class="logo d-flex align-items-center gap-2">
+    <img src="assets/Logo.png" alt="Logo cerebro neuronal" width="80" height="80">
+    <h2 class="m-0">Egel Pro</h2>
+  </div>
+  <div class="nav-links d-flex gap-3">
+    <a  [routerLink]="['/login']" class="btn btn-outline-secondary">Login</a>
+    <a  [routerLink]="['/login']" class="btn btn-neon">Sign Up</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section text-center text-neon">
+    <h1 class="display-4">Prepárate para el EGEL</h1>
+    <p class="lead">Estudia, practica y domina los temas clave.</p>
+    <a href="#caracteristicas" class="btn btn-neon mt-3">Ver más</a>
+  </section>
+
+  <!-- CARACTERÍSTICAS -->
+  <section id="caracteristicas"   class="text-center py-5 bg-gris text-white">
+    <div class="container">
+      <h2 class="mb-4 text-neon-gradient">Características</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <h5 class="text-neon">📚 Banco de preguntas</h5>
+          <p>Acceso diario a preguntas tipo EGEL para repasar.</p>
+        </div>
+        <div class="col-md-4">
+          <h5 class="text-neon">📈 Seguimiento</h5>
+          <p>Monitorea tu progreso con estadísticas claras.</p>
+        </div>
+        <div class="col-md-4">
+          <h5 class="text-neon">🎯 Simulacros</h5>
+          <p>Exámenes simulados con retroalimentación.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENTAJAS -->
+  <section  class="py-5 text-center  text-white">
+    <div class="container">
+      <h2 class="text-neon-gradient mb-4">¿Por qué elegir EGEL PRO?</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h5 class="text-neon">🔍 Enfoque inteligente</h5>
+          <p>Te presentamos preguntas clave que han salido en exámenes reales para que estudies de forma efectiva.</p>
+        </div>
+        <div class="col-md-6">
+          <h5 class="text-neon">⏱️ Estudia a tu ritmo</h5>
+          <p>Desde tu celular o computadora, puedes estudiar cuando quieras y avanzar a tu ritmo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section class="py-5 text-center bg-gris text-white " >
+    <div class="container">
+      <h2 class="text-neon-gradient mb-5">Lo que dicen nuestros usuarios</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <blockquote>
+            <p>"Con EGEL PRO aprobé con excelente resultado. El simulador fue clave."</p>
+            <footer class="text-secondary mt-2">– Andrea M., ISIC</footer>
+          </blockquote>
+        </div>
+        <div class="col-md-4">
+          <blockquote>
+            <p>"Me encantó la interfaz y cómo iba viendo mi avance día a día."</p>
+            <footer class="text-secondary mt-2">– Luis G., Ingeniería en Computación</footer>
+          </blockquote>
+        </div>
+        <div class="col-md-4">
+          <blockquote>
+            <p>"Fue como tener un entrenador personal para el EGEL. Súper recomendable."</p>
+            <footer class="text-secondary mt-2">– Karla R., Sistemas UAA</footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTRO -->
+  <section id="registro" class="py-5 text-center  text-white" >
+    <div class="container">
+      <h2 class="text-neon-gradient mb-4">¿Te interesa EGEL PRO?</h2>
+      <p class="mb-4">Déjanos tu correo y te avisaremos cuando esté disponible.</p>
+      <form class="mx-auto" style="max-width: 400px;">
+        <input type="email" class="form-control mb-3" placeholder="Tu correo electrónico" required>
+        <button type="submit" class="btn btn-neon w-100">Quiero saber más</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="creadores" class="py-5 text-center text-white" >
+  <div class="container ">
+    <h2 class="text-neon-gradient mb-5">Conoce al equipo detrás de EGEL PRO</h2>
+    
+    <div id="carouselCreadores" class="carousel slide " data-bs-ride="carousel">
+      <div class="carousel-inner">
+
+      
+
+        <!-- primer integrante -->
+        <div class="carousel-item active">
+          <div class="card mx-auto creator-card my-5 p-4">
+            <img src="assets/omar.jpg" class="card-img-top" alt="Foto de Creador 2">
+            <div class="card-body">
+              <h5 class="card-title text-neon">Omar Reyes</h5>
+              <p class="card-text text-white">Diseñadora UX/UI, enfocada en crear experiencias intuitivas para estudiantes.</p>
+            </div>
+          </div>
+        </div>
+
+          <!-- segundo integrante -->
+        <div class="carousel-item ">
+          <div class="card mx-auto creator-card my-5 p-4">
+            <img src="assets/aaron.jpg" class="card-img-top" alt="Foto de Creador 1">
+            <div class="card-body">
+              <h5 class="card-title text-neon">Aaron Lopez</h5>
+              <p class="card-text text-white">Desarrollador Full Stack. Apasionado por el Diseño Web.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tercer integrante -->
+        <div class="carousel-item">
+          <div class="card mx-auto creator-card my-5 p-4">
+            <img src="assets/alan.jpg" class="card-img-top" alt="Foto de Creador 3">
+            <div class="card-body">
+              <h5 class="card-title text-neon">Alan Guerrero</h5>
+              <p class="card-text text-white">Especialista en contenido y base de datos de preguntas tipo EGEL.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Controles del carrusel -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselCreadores" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselCreadores" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+  <!-- CTA FINAL -->
+  <section class="text-center py-5 bg-black text-white">
+    <h2 class="text-neon-gradient mb-3">¿Estás listo para tu examen?</h2>
+    <a href="#registro" class="btn btn-neon btn-lg">Comienza ahora</a>
+  </section>
+
+</main>
+

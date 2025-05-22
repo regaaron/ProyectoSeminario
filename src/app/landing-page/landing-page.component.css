@@ -1,0 +1,124 @@
+nav {
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bg-gris{
+    background-color: #1e2229;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo h2 {
+  background: linear-gradient(90deg, #00f0ff, #9b00ff, #ff00d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo img {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.text-neon {
+  color: #00f0ff;
+}
+
+.text-neon-gradient {
+  background: linear-gradient(90deg, #00fff0, #ff00d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+
+.btn-neon {
+  background: linear-gradient(90deg, #00f0ff, #9b00ff, #ff00d4);
+  border: none;
+  color: black;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: pulseNeon 2.5s ease-in-out infinite alternate;
+}
+
+.btn-neon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #ff00d4, 0 0 30px #9b00ff;
+}
+
+@keyframes pulseNeon {
+  from {
+    box-shadow: 0 0 10px #00f0ff, 0 0 20px #9b00ff;
+  }
+  to {
+    box-shadow: 0 0 15px #ff00d4, 0 0 30px #9b00ff;
+  }
+}
+
+.hero-section {
+  padding: 100px 20px;
+  background: radial-gradient(ellipse at center, #111 0%, #000 100%);
+}
+
+.fade-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.creator-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(200, 200, 200, 0.3);
+  border-radius: 1rem;
+  max-width: 320px;
+  animation: neon-border 2s linear infinite;
+  transition: transform 0.3s;
+  backdrop-filter: blur(6px);
+}
+
+.creator-card:hover {
+  transform: scale(1.03);
+}
+
+.creator-card img {
+
+  height: 250px;
+  object-fit: cover;
+}
+
+/* Animación del borde */
+@keyframes neon-border {
+  0% {
+    box-shadow: 0 0 5px #888, 0 0 10px #888;
+  }
+  50% {
+    box-shadow: 0 0 8px #ccc, 0 0 20px #ccc;
+  }
+  100% {
+    box-shadow: 0 0 5px #888, 0 0 10px #888;
+  }
+}
+

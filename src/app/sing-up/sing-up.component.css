@@ -1,0 +1,108 @@
+.register-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+  padding-top: 60px;
+  background: linear-gradient(35deg, #000000 70%, #0ae98a 100%);
+}
+
+.register-box {
+  background-color: #111;
+  border: 2px solid #ddd;
+  border-radius: 16px;
+  padding: 30px 24px; /* Menos alto */
+  width: 100%;
+  max-width: 560px;
+  min-height: 420px; /* Da forma más cuadrada */
+  box-shadow: 0 10px 20px #0ae98a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.register-box h2 {
+  margin-bottom: 24px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  color: #ddd;
+}
+
+input.form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background-color: #222;
+  color: white;
+  border: 1px solid #ddd;
+}
+
+input::placeholder {
+  color: #aaa;
+  opacity: 1;
+}
+
+.btn-register {
+  width: 100%;
+  padding: 12px;
+  background-color: #0ae98a;
+  border: 2px solid white;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-register:hover {
+  background-color: #069b5a;
+  color: black;
+  box-shadow: 0 0 12px #035c35;
+}
+
+.titulo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.gradient-title {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #00ff88, #00ffaa 30%, #00ffcc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px #00ff88;
+}
+
+.btn-volver {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: transparent;
+  border: 2px solid #0ae98a;
+  border-radius: 8px;
+  color: #0ae98a;
+  font-weight: bold;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.btn-volver:hover {
+  background-color: #0ae98a;
+  color: black;
+}

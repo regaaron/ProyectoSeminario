@@ -1,0 +1,135 @@
+/* Fondo oscuro con un gradiente verde sutil en la esquina superior derecha */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(
+    35deg,
+    #000000 50%,
+    #0ae98a 100%
+  );
+}
+
+/* Caja del login */
+.login-box {
+  background-color: #111;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 20px #0ae98a;
+  /* box-shadow: #0ae98a 0px 20px 55px, #0ae98a 0px 4px 6px, #0ae98a 0px 12px 13px, #0ae98a 0px 0px 5px; */
+  color: white;
+}
+
+/* Título */
+.login-box h2 {
+  margin-bottom: 24px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+/* Campos del formulario */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  color: #ddd;
+}
+
+input.form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background-color: #222;
+  color: white;
+  border: 1px solid #ddd;
+}
+
+/* Placeholder visible en fondo oscuro */
+input::placeholder {
+  color: #aaa;
+  opacity: 1; /* Para que se vea bien */
+}
+
+
+
+/* Botón de login */
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background-color: #0ae98a;
+  border: 2px solid white;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #069b5a;
+  color: black;
+  box-shadow: 0 0 12px #035c35;
+}
+
+.btn-register{
+    width: 100%;
+    padding: 12px;
+    background-color:transparent;
+    border: 2px solid white;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-register:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 12px #035c35;
+}
+
+.titulo-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+
+}
+
+.gradient-title {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #00ff88, #00ffaa 30%, #00ffcc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px #00ff88;
+}
+
+.btn-volver {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: transparent;
+  border: 2px solid #0ae98a;
+  border-radius: 8px;
+  color: #0ae98a;
+  font-weight: bold;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.btn-volver:hover {
+  background-color: #0ae98a;
+  color: black;
+}
