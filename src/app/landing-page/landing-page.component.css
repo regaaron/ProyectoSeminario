@@ -20,11 +20,12 @@ nav {
 }
 
 .logo h2 {
-  background: linear-gradient(90deg, #00f0ff, #9b00ff, #ff00d4);
+  /* background: linear-gradient(90deg, #00f0ff, #9b00ff, #ff00d4); */
+  
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   font-size: 24px;
   font-weight: bold;
+  color: #0ae98a;
 }
 
 .logo img {
@@ -51,7 +52,7 @@ nav {
 
 
 .btn-neon {
-  background: linear-gradient(90deg, #00f0ff, #9b00ff, #ff00d4);
+  background-color: #0ae98a;
   border: none;
   color: black;
   font-weight: bold;
@@ -61,15 +62,15 @@ nav {
 
 .btn-neon:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px #ff00d4, 0 0 30px #9b00ff;
+  box-shadow: 0 0 15px color: #0ae98a;
 }
 
 @keyframes pulseNeon {
   from {
-    box-shadow: 0 0 10px #00f0ff, 0 0 20px #9b00ff;
+    box-shadow: 0 0 10px #0ae98a, 0 0 20px #03481d;
   }
   to {
-    box-shadow: 0 0 15px #ff00d4, 0 0 30px #9b00ff;
+    box-shadow: 0 0 15px #0ae98a, 0 0 30px #03481d;
   }
 }
 
@@ -112,13 +113,13 @@ nav {
 /* Animación del borde */
 @keyframes neon-border {
   0% {
-    box-shadow: 0 0 5px #888, 0 0 10px #888;
+    box-shadow: 0 0 5px #0ae98a, 0 0 10px #0ae98a;
   }
   50% {
-    box-shadow: 0 0 8px #ccc, 0 0 20px #ccc;
+    box-shadow: 0 0 8px #0ae98a, 0 0 20px #0ae98a;
   }
   100% {
-    box-shadow: 0 0 5px #888, 0 0 10px #888;
+    box-shadow: 0 0 5px #0ae98a, 0 0 10px #0ae98a;
   }
 }
 
