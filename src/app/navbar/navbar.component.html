@@ -4,16 +4,15 @@
     <span class="logo-text">EGEL<br>PRO</span>
   </div>
 
-  <ul class="nav-links">
-    <li><a [routerLink]="['/Inicio']" routerLinkActive="active" >Inicio</a></li>
-    <li><a [routerLink]="['/Temas']" routerLinkActive="active" >Temas</a></li>
-    <li><a [routerLink]="['/Simulador']" routerLinkActive="active" >Simulador</a></li>
-    <li><a [routerLink]="['/Resultados']" routerLinkActive="active" >Resultados</a></li>
-    <li><a [routerLink]="['/landing-page']" routerLinkActive="active" >Cerrar Sesion</a></li>
-    <!-- <li><a [routerLink]="['/']" routerLinkActive="active" >Simulador</a></li>
-    <li><a [routerLink]="['/']" routerLinkActive="active" >Resultados</a></li>
-    <li><a [routerLink]="['/login']" routerLinkActive="active" >Iniciar Sesión</a></li>
-    <li><a [routerLink]="['/sing-up']" routerLinkActive="active" >Registrarse</a></li> -->
+  <div class="menu-toggle" (click)="menuOpen = !menuOpen">
+    <span></span><span></span><span></span>
+  </div>
+
+  <ul class="nav-links" [class.open]="menuOpen">
+    <li><a routerLink="/Inicio" routerLinkActive="active">Inicio</a></li>
+    <li><a routerLink="/Temas" routerLinkActive="active">Temas</a></li>
+    <li><a routerLink="/Simulador" routerLinkActive="active">Simulador</a></li>
+    <li><a routerLink="/Resultados" routerLinkActive="active">Resultados</a></li>
+    <li><a routerLink="/landing-page" routerLinkActive="active">Cerrar Sesión</a></li>
   </ul>
 </nav>
-
