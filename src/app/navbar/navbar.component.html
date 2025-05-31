@@ -9,10 +9,13 @@
   </div>
 
   <ul class="nav-links" [class.open]="menuOpen">
-    <li><a routerLink="/Inicio" routerLinkActive="active">Inicio</a></li>
-    <li><a routerLink="/Temas" routerLinkActive="active">Temas</a></li>
-    <li><a routerLink="/Simulador" routerLinkActive="active">Simulador</a></li>
-    <li><a routerLink="/Resultados" routerLinkActive="active">Resultados</a></li>
-    <li><a routerLink="/landing-page" routerLinkActive="active">Cerrar Sesión</a></li>
+    <li><a routerLink="/Inicio" routerLinkActive="active" (click)="menuOpen=false">Inicio</a></li>
+    <li><a routerLink="/Temas" routerLinkActive="active2" (click)="menuOpen=false">Temas</a></li>
+    <li><a routerLink="/Simulador" routerLinkActive="active" (click)="menuOpen=false">Simulador</a></li>
+    <li><a routerLink="/Resultados" routerLinkActive="active" (click)="menuOpen=false">Resultados</a></li>
+    <li><a routerLink="/Resultados" routerLinkActive="active" (click)="menuOpen=false">Resultados2</a></li>
+    <li><a routerLink="/Resultados" routerLinkActive="active" (click)="menuOpen=false">Resultados3</a></li>
+    <li><a routerLink="/landing-page" routerLinkActive="active" (click)="menuOpen=false">Cerrar Sesión</a></li>
+
   </ul>
 </nav>

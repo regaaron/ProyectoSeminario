@@ -1,4 +1,112 @@
-p{
-    height: 100vh;
-    color: white;
+.temas-container {
+  padding: 2rem;
+  color: #1e9ce4;
+  text-align: center;
+  background: linear-gradient(
+  to bottom left,
+  #075ca633 0%,     /* azul neón semi-transparente */
+  #000000 40%,      /* transición a negro */
+  #000000 100%      /* completamente negro */
+);
+
+}
+
+.tema-card p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
+  white-space: normal; /* Permite saltos de línea */
+  max-height: 3em; /* Limita el alto */
+  overflow: hidden;
+}
+
+
+.temas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas por fila */
+  gap: 2rem;
+  justify-items: center;
+}
+
+.tema-card {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid #00f0ff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 0 10px #1981bc;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.tema-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px #1981bc;
+}
+
+.tema-icono {
+  font-size: 2.5rem;
+  color: #1e9ce4;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 6px #051824;
+}
+
+@media (max-width: 768px) {
+  .temas-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 por fila en tablets */
+  }
+}
+
+@media (max-width: 500px) {
+  .temas-grid {
+    grid-template-columns: 1fr; /* 1 por fila en teléfonos */
+  }
+}
+
+
+.tema-detalle {
+  background-color: #121212;
+  padding: 2rem;
+  border-radius: 1rem;
+  color: #00f0ff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  margin-top: 1.5rem;
+}
+
+.tema-detalle h2 {
+  color: #00f0ff;
+  margin-bottom: 0.5rem;
+}
+
+.subtemas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.subtema-card {
+  background-color: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 255, 200, 0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+
+.subtema-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 255, 200, 0.3);
+}
+
+.subtema-card h4 {
+  color: #00f0ff;
+  margin-bottom: 0.5rem;
+}
+
+.subtema-card p {
+  color: #ccc;
+  font-size: 0.95rem;
 }

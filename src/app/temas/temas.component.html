@@ -1,1 +1,26 @@
-<p>temas works!</p>
+<div class="temas-container">
+  <h2>Selecciona un tema para comenzar</h2>
+
+  <div class="temas-grid">
+    <div class="tema-card" *ngFor="let tema of temas" (click)="seleccionarTema(tema)">
+      <i [class]="tema.icono" class="tema-icono"></i>
+      <h3>{{ tema.nombre }}</h3>
+      <p>{{ tema.descripcion }}</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="tema-detalle" *ngIf="temaSeleccionado" #detalleSeccion>
+  <hr />
+  <h2>{{ temaSeleccionado.nombre }}</h2>
+  <p>{{ temaSeleccionado.descripcion }}</p>
+
+  <h3>Subtemas:</h3>
+  <div class="subtemas-grid">
+    <div class="subtema-card" *ngFor="let subtema of temaSeleccionado.temas" >
+      <h4>{{ subtema.nombre }}</h4>
+      <p>{{ subtema.descripcion }}</p>
+    </div>
+  </div>
+</div>

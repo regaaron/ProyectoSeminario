@@ -51,6 +51,21 @@
   color: #0ae98a;
 }
 
+.nav-links a.active2 {
+  color: #00f0ff;
+}
+
+.nav-links .active2::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #00f0ff;
+  box-shadow: 0 0 6px #00f0ff;
+}
+
 .nav-links .active::after {
   content: '';
   position: absolute;
@@ -96,7 +111,8 @@
   }
 
   .nav-links.open {
-    max-height: 300px;
+    max-height: 100vh;
+    
     padding: 1rem 0;
   }
 
