@@ -1,5 +1,5 @@
 
-<div class="login-container">
+<div class="login-container mb-3">
     <div class="titulo-container">
     <a [routerLink]="['/landing-page']" class="btn-volver">
   ⬅ Inicio
@@ -9,17 +9,28 @@
 </div>
   <div class="login-box">
     <h2>Iniciar Sesión</h2>
-    <form>
+    <form (ngSubmit)="loginEmail()">
       <div class="form-group">
         <label for="email">Correo electrónico</label>
-        <input type="email" id="email" class="form-control" placeholder="ejemplo@correo.com">
+        <input type="email" id="email" name="email" [(ngModel)]="email" class="form-control" placeholder="ejemplo@correo.com">
       </div>
       <div class="form-group">
         <label for="password">Contraseña</label>
-        <input type="password" id="password" class="form-control" placeholder="••••••••">
+        <input type="password" name="password" id="password"[(ngModel)]="password" class="form-control" placeholder="••••••••">
       </div>
-      <button type="submit" class="btn-login" [routerLink]="['/']">Ingresar</button>
-      <button type="button" class="btn-register mt-2" [routerLink]="['/SingUp']" >Registrarse</button>
+  
+      <button type="submit" class="btn-login" >Ingresar</button>
+    
     </form>
+
+     
+      <button type="button" class="btn-google mt-3" (click)="loginGoogle()">
+          <i class="fa-brands fa-google"></i> Iniciar sesión con Google
+      </button> 
+      
+      <button type="button" class="btn-register mt-3" [routerLink]="['/recoverpassword']">Recuperar contraseña</button>
+
+
+      <button type="button" class="btn-register mt-2" [routerLink]="['/SingUp']" >Registrarse</button>
   </div>
 </div>

@@ -6,13 +6,20 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MainComponentComponent } from './main-component/main-component.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { TemasComponent } from './temas/temas.component';
+import { authGuard } from './guards/auth.guard';
+import { RecoverpasswordComponent } from './recoverpassword/recoverpassword.component';
 
 
 export const routes: Routes = [
+    { path: '', redirectTo: 'landing-page', pathMatch: 'full' }, // Redirect to landing page by default
     { path: 'login', component: LoginComponent },
     { path: 'landing-page', component: LandingPageComponent },
     { path: 'SingUp', component: SingUpComponent },
-    { path: '', component: MainComponentComponent,
+    { path: 'recoverpassword', component: RecoverpasswordComponent },
+
+    { path: 'main', component: MainComponentComponent,
+        
+        canActivate: [authGuard], // 🔒 Protegido
         children:[
             {path: '', redirectTo: 'Inicio', pathMatch: 'full'}, // Redirect to Inicio by default
             {path: 'Inicio',  component: InicioComponent},

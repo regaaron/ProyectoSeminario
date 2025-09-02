@@ -5,24 +5,26 @@
     </a>
     <h2 class="gradient-title">Egel Pro</h2>
   </div>
+
+
   <div class="register-box">
     <h2>Crear Cuenta</h2>
-    <form>
+     <form (ngSubmit)="registerEmail()">
       <div class="form-group">
         <label for="name">Nombre completo</label>
-        <input type="text" id="name" class="form-control" placeholder="Tu nombre">
+        <input type="text" id="name" name="name" [(ngModel)]="name" class="form-control" placeholder="Tu nombre">
       </div>
       <div class="form-group">
         <label for="email">Correo electrónico</label>
-        <input type="email" id="email" class="form-control" placeholder="ejemplo@correo.com">
+        <input type="email" id="email" [(ngModel)]="email" name="email" class="form-control" placeholder="ejemplo@correo.com">
       </div>
       <div class="form-group">
         <label for="password">Contraseña</label>
-        <input type="password" id="password" class="form-control" placeholder="••••••••">
+        <input type="password" id="password" [(ngModel)]="password" name="password" class="form-control" placeholder="••••••••">
       </div>
       <div class="form-group">
         <label for="confirmPassword">Confirmar contraseña</label>
-        <input type="password" id="confirmPassword" class="form-control" placeholder="••••••••">
+        <input type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" class="form-control" placeholder="••••••••">
       </div>
       <button type="submit" class="btn-register">Registrarse</button>
     </form>
