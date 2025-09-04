@@ -1,133 +1,45 @@
-/* Fondo oscuro con un gradiente verde sutil en la esquina superior derecha */
-.login-container {
+.login-page{
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(
+  flex-direction: column;
+  font-family: 'Arial', sans-serif;
+   background: linear-gradient(
     35deg,
     #000000 50%,
     #0ae98a 100%
   );
 }
 
-/* Caja del login */
-.login-box {
-  background-color: #111;
-  border: 2px solid #ddd;
-  border-radius: 12px;
-  padding: 40px;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 10px 20px #0ae98a;
-  /* box-shadow: #0ae98a 0px 20px 55px, #0ae98a 0px 4px 6px, #0ae98a 0px 12px 13px, #0ae98a 0px 0px 5px; */
-  color: white;
+/* --- CONTENEDOR GENERAL --- */
+.login-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #111; /* fondo oscuro */
+  border-radius: 1rem;
+ background-color: #1a1a1a;
+  box-shadow: rgba(0, 255, 200, 0.2) 0px 54px 55px, rgba(0, 255, 200, 0.2) 0px -12px 30px, rgba(0, 255, 200, 0.2)0px 12px 13px, rgba(0, 255, 200, 0.2) 0px -3px 5px;
+  color: #fff;
 }
 
-/* Título */
-.login-box h2 {
-  margin-bottom: 24px;
+.button-Inicio {
+  display: flex;
+  justify-content: center; /* centra el botón */
+}
+
+/* Botón Inicio */
+.button-Inicio .btn-neon {
+  width: auto;              /* que se ajuste al contenido */
+  min-width: 150px;         /* ancho mínimo */
+  padding: 0.8rem 2rem;     /* más equilibrado */
   text-align: center;
-  color: white;
-  font-weight: bold;
 }
-
-/* Campos del formulario */
-.form-group {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin-bottom: 6px;
-  color: #ddd;
-}
-
-input.form-control {
-  width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: none;
-  outline: none;
-  background-color: #222;
-  color: white;
-  border: 1px solid #ddd;
-}
-
-/* Placeholder visible en fondo oscuro */
-input::placeholder {
-  color: #aaa;
-  opacity: 1; /* Para que se vea bien */
-}
-
-
-
-/* Botón de login */
-.btn-login {
-  width: 100%;
-  padding: 12px;
-  background-color: #0ae98a;
-  border: 2px solid white;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn-google{
-    width: 100%;
-    padding: 12px;
-    background-color: #db4437;
-    border: 2px solid white;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-bottom: 10px;
-}
-
-.btn-google:hover{
-    background-color: #c33d30;
-    color: black;
-    box-shadow: 0 0 12px #8b2a24;
-}
-
-.btn-login:hover {
-  background-color: #069b5a;
-  color: black;
-  box-shadow: 0 0 12px #035c35;
-}
-
-.btn-register{
-    width: 100%;
-    padding: 12px;
-    background-color:transparent;
-    border: 2px solid white;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-register:hover {
-    background-color: white;
-    color: black;
-    box-shadow: 0 0 12px #035c35;
-}
-
-.titulo-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    gap: 20px;
-
-}
-
-.gradient-title {
-  font-size: 3rem;
+/* --- TITULO --- */
+.btn-container h2 {
+  font-size: 2rem;
+  text-align: center;
   font-weight: bold;
   background: linear-gradient(135deg, #00ff88, #00ffaa 30%, #00ffcc);
   -webkit-background-clip: text;
@@ -135,19 +47,136 @@ input::placeholder {
   text-shadow: 0 0 8px #00ff88;
 }
 
-.btn-volver {
-  display: inline-block;
-  padding: 8px 16px;
-  background-color: transparent;
-  border: 2px solid #0ae98a;
-  border-radius: 8px;
-  color: #0ae98a;
+.btn-container button{
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
   font-weight: bold;
-  margin-bottom: 20px;
-  transition: 0.3s;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.btn-volver:hover {
+/* --- FORMULARIO --- */
+.forms-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #aaa;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid #0ae98a;
+  border-radius: 0.5rem;
+  background: #1a1a1a;
+  color: #fff;
+  outline: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+ 
+/* escalar y remarcar disenio */
+.form-input:focus {
+
+  border-color: #0ae98a;
+  box-shadow: 0 0 8px #0ae98a;
+  transform: scale(1.02);
+  animation: pulseNeon 1.5s infinite alternate;
+}
+
+/* --- BOTONES --- */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Botón neón principal */
+.btn-neon {
+  background: transparent;
+  border: 2px solid rgba(10, 233, 138, 0.5);
+   color: black;
   background-color: #0ae98a;
-  color: black;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+ 
+}
+
+.btn-neon:hover {
+ background-color: #069b5a;
+  color: white;
+  box-shadow: 0 0 12px #035c35;
+}
+
+/* Botón secundario */
+.btn-secundario {
+  background: transparent;
+  border: 2px solid #666;
+  color: #ccc;
+}
+
+.btn-secundario:hover {
+  background: #333;
+  color: #fff;
+}
+
+/* Botón Google */
+.btn-google {
+  background: rgb(255,163,55);
+  border: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.btn-google:hover {
+  background: rgb(255, 0, 0);
+}
+
+
+
+/* media para movil */
+@media (max-width: 600px) {
+  .login-container {
+    margin: 1rem;
+    padding: 1.5rem;
+    width: 80%;
+  }
+
+  .btn-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-input {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .btn {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .button-Inicio .btn-neon {
+    min-width: 120px;
+    padding: 0.6rem 1.5rem;
+  }
 }
