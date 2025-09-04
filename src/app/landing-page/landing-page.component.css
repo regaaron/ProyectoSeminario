@@ -12,6 +12,8 @@ nav {
    
 }
 
+
+
 .bg-gris{
     background-color: #1e2229;
 }
@@ -83,6 +85,16 @@ nav {
 .hero-section {
   padding: 100px 20px;
   background: radial-gradient(ellipse at center, #111 0%, #000 100%);
+}
+
+.creadores-container h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #10b981, #06b6d4, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+  margin-bottom: 1rem;
 }
 
 .fade-on-scroll {

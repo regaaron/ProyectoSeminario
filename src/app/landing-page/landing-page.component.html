@@ -7,7 +7,7 @@
     <ul>
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#caracteristicas">Características</a></li>
-      <li><a href="">Testimonios</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
     </ul>
   </div>
   <div class="nav-links d-flex gap-3">
@@ -28,47 +28,13 @@
   <app-why-choose-seccion ></app-why-choose-seccion>
 
   <!-- TESTIMONIOS -->
-  <section class="py-5 text-center bg-gris text-white " >
-    <div class="container">
-      <h2 class="text-neon-gradient mb-5">Lo que dicen nuestros usuarios</h2>
-      <div class="row">
-        <div class="col-md-4">
-          <blockquote>
-            <p>"Con EGEL PRO aprobé con excelente resultado. El simulador fue clave."</p>
-            <footer class="text-secondary mt-2">– Andrea M., ISIC</footer>
-          </blockquote>
-        </div>
-        <div class="col-md-4">
-          <blockquote>
-            <p>"Me encantó la interfaz y cómo iba viendo mi avance día a día."</p>
-            <footer class="text-secondary mt-2">– Luis G., Ingeniería en Computación</footer>
-          </blockquote>
-        </div>
-        <div class="col-md-4">
-          <blockquote>
-            <p>"Fue como tener un entrenador personal para el EGEL. Súper recomendable."</p>
-            <footer class="text-secondary mt-2">– Karla R., Sistemas UAA</footer>
-          </blockquote>
-        </div>
-      </div>
-    </div>
-  </section>
+  <app-testimonios id="testimonios"></app-testimonios>
 
-  <!-- REGISTRO -->
-  <section id="registro" class="py-5 text-center  text-white" >
-    <div class="container">
-      <h2 class="text-neon-gradient mb-4">¿Te interesa EGEL PRO?</h2>
-      <p class="mb-4">Déjanos tu correo y te avisaremos cuando esté disponible.</p>
-      <form class="mx-auto" style="max-width: 400px;">
-        <input type="email" class="form-control mb-3" placeholder="Tu correo electrónico" required>
-        <button type="submit" class="btn btn-neon w-100">Quiero saber más</button>
-      </form>
-    </div>
-  </section>
+  <!-- CREADORES -->
 
-  <section id="creadores" class="py-5 text-center text-white" >
-  <div class="container ">
-    <h2 class="text-neon-gradient mb-5">Conoce al equipo detrás de EGEL PRO</h2>
+  <section id="creadores" class="py-5 text-center text-white bg-black" >
+  <div class="container creadores-container">
+    <h2 class="mb-5 ">Conoce al equipo detrás de EGEL PRO</h2>
     
     <div id="carouselCreadores" class="carousel slide " data-bs-ride="carousel">
       <div class="carousel-inner">
@@ -122,8 +88,8 @@
 </section>
 
   <!-- CTA FINAL -->
-  <section class="text-center py-5 bg-black text-white">
-    <h2 class="text-neon-gradient mb-3">¿Estás listo para tu examen?</h2>
+  <section class="text-center py-5 bg-black text-white creadores-container">
+    <h2 class=" mb-3">¿Estás listo para tu examen?</h2>
     <a href="#registro" class="btn btn-neon btn-lg">Comienza ahora</a>
   </section>
 
