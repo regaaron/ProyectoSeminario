@@ -1,31 +1,58 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Auth, GoogleAuthProvider, signInWithPopup ,signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from '@angular/fire/auth';
+import { Auth, GoogleAuthProvider, signInWithPopup ,signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, User, getIdToken, onAuthStateChanged } from '@angular/fire/auth';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private auth: Auth ) { }
+
+   currentUser: User | null = null; // 🔹 aquí guardamos el usuario actual
+   private apiUrl = 'http://localhost:3000/auth'; // tu backend Node
+
+   //injectamos Auth y HttpClient auth para firebase y http para llamadas a api
+  constructor(private auth: Auth, private http: HttpClient) {
+        // 🔹 Suscribirse al estado de autenticación
+        onAuthStateChanged(this.auth, (user) => {
+          this.currentUser = user;
+        });
+  }
 
   //login con correo y contaseña
-  loginEmail(email: string, password: string){
-    return signInWithEmailAndPassword(this.auth,email,password);
+  async loginEmail(email: string, password: string){
+    //guardar en result el usuario autenticado
+    const result = await signInWithEmailAndPassword(this.auth,email,password);
+    const user = result.user;
+    await this.saveUserToBackend(user); //llamamos a la función para guardar en backend
+    return user;
   }
 
-  loginGoogle(){
+
+   // 🔹 Login con Google
+  async loginGoogle(){
+    //Guardamos en resul el usuario autenticado
     const provider = new GoogleAuthProvider();
-    return signInWithPopup(this.auth,provider);
+    const result = await signInWithPopup(this.auth,provider);
+    const user = result.user;
+    await this.saveUserToBackend(user); //llamamos a la función para guardar en backend
+    return user;
   }
+
 
   logOut(){
     return this.auth.signOut();
   }
 
 
-  registerEmail(email: string, password: string){
-    return createUserWithEmailAndPassword(this.auth,email,password);
-
+    // 🔹 Registro con correo
+  async registerEmail(email: string, password: string){
+    //guardar en result el usuario creado
+    const result = await createUserWithEmailAndPassword(this.auth,email,password);
+    const user = result.user;
+    await this.saveUserToBackend(user); //llamamos a la función para guardar en backend
+    return user;
   }
 
 
@@ -36,4 +63,24 @@ export class AuthService {
   resetPassword(email: string){
     return sendPasswordResetEmail(this.auth,email);
   }
+
+  
+  // 🔹 Guardar usuario en backend
+  private async saveUserToBackend(user: User) {
+    // Obtener el token de ID del usuario y los detalles necesarios
+    const token = await getIdToken(user);
+    const nombre = user.displayName || 'Usuario';
+    const correo = user.email || '';
+    const uid = user.uid;
+
+    console.log('Saving user to backend:', { token, nombre, correo, uid });
+
+    //llamado a la api con el body necesario token, nombre, correo, uid
+    return this.http.post(`${this.apiUrl}/saveUser`, {
+      token, nombre, correo, uid
+    }).toPromise();
+
+  }
+
+
 }
