@@ -1,16 +1,37 @@
-.login-page{
-  min-height: 100vh;
+.login-page {
+  position: relative; /* necesario para el overlay */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  font-family: 'Arial', sans-serif;
-   background: linear-gradient(
-    35deg,
-    #000000 50%,
-    #0ae98a 100%
-  );
+  height: 100vh;
+
+  /* Imagen de fondo */
+  background-image: url("../../assets/image.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden; /* evita que el overlay se salga */
 }
+
+/* Overlay oscuro sutil */
+.login-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* color negro semi-transparente */
+  z-index: 0;
+}
+
+/* Contenido por encima del overlay */
+.login-page > * {
+  position: relative;
+  z-index: 1;
+}
+
 
 /* --- CONTENEDOR GENERAL --- */
 .login-container {
@@ -19,7 +40,7 @@
   padding: 2rem;
   background: #111; /* fondo oscuro */
   border-radius: 1rem;
- background-color: #1a1a1a;
+  background-color: #1a1a1a;
   box-shadow: rgba(0, 255, 200, 0.2) 0px 54px 55px, rgba(0, 255, 200, 0.2) 0px -12px 30px, rgba(0, 255, 200, 0.2)0px 12px 13px, rgba(0, 255, 200, 0.2) 0px -3px 5px;
   color: #fff;
 }
