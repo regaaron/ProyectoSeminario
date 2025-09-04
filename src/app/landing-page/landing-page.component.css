@@ -110,6 +110,32 @@ nav {
   object-fit: cover;
 }
 
+/* Quitar estilos predeterminados del <ul> y <li> */
+.secciones ul {
+  list-style: none;      /* quita los bullets */
+  padding: 0;
+  margin: 0;
+  display: flex;         /* para mostrar horizontal */
+  gap: 20px;             /* espacio entre elementos */
+}
+
+/* Quitar estilos predeterminados de los <a> */
+.secciones a {
+  color: inherit;        /* hereda color del contenedor */
+  text-decoration: none; /* quita subrayado */
+  font-size: 18px;
+  font-weight: 500;
+  font-family: sans-serif;
+  cursor: pointer;
+  transition: color 0.3s; /* efecto suave al hover */
+}
+
+/* Efecto hover opcional */
+.secciones a:hover {
+  color: #0ae98a;        /* color rosa neón por ejemplo */
+}
+
+
 /* Animación del borde */
 @keyframes neon-border {
   0% {
