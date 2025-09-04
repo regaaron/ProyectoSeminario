@@ -4,7 +4,15 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;               /* se pega al top de la ventana */
+  z-index: 1000; 
+  background-color: #000;   
+  border-bottom: 1px solid #0ae98a;    
+   
 }
+
+
 
 .bg-gris{
     background-color: #1e2229;
@@ -79,6 +87,16 @@ nav {
   background: radial-gradient(ellipse at center, #111 0%, #000 100%);
 }
 
+.creadores-container h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #10b981, #06b6d4, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
 .fade-on-scroll {
   opacity: 0;
   transform: translateY(30px);
@@ -109,6 +127,32 @@ nav {
   height: 250px;
   object-fit: cover;
 }
+
+/* Quitar estilos predeterminados del <ul> y <li> */
+.secciones ul {
+  list-style: none;      /* quita los bullets */
+  padding: 0;
+  margin: 0;
+  display: flex;         /* para mostrar horizontal */
+  gap: 20px;             /* espacio entre elementos */
+}
+
+/* Quitar estilos predeterminados de los <a> */
+.secciones a {
+  color: inherit;        /* hereda color del contenedor */
+  text-decoration: none; /* quita subrayado */
+  font-size: 18px;
+  font-weight: 500;
+  font-family: sans-serif;
+  cursor: pointer;
+  transition: color 0.3s; /* efecto suave al hover */
+}
+
+/* Efecto hover opcional */
+.secciones a:hover {
+  color: #0ae98a;        /* color rosa neón por ejemplo */
+}
+
 
 /* Animación del borde */
 @keyframes neon-border {

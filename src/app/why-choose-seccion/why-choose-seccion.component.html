@@ -1,0 +1,58 @@
+<section class="por-que-elegir-section">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="title">
+        ¿Por qué elegir <span class="highlight">EGEL PRO?</span>
+      </h2>
+      <p class="subtitle">
+        Prepararte para el EGEL es crucial para tu futuro profesional. Aquí te explicamos por qué es importante acceder a nuestra plataforma.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="reasons-list">
+        <div *ngFor="let reason of reasons" class="reason-card">
+          <div class="icon-wrapper">
+            <i class="fa-solid" [ngClass]="reason.icon"></i>
+          </div>
+          <div class="reason-content">
+            <h3>{{ reason.title }}</h3>
+            <p>{{ reason.description }}</p>
+          </div>
+        </div>
+
+        <div class="highlight-card">
+          <div class="icon-wrapper-small">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <div class="content">
+            <h4>¿Por qué es importante acceder aquí?</h4>
+            <p>
+              El EGEL es un examen decisivo para tu titulación y futuro laboral. Nuestra plataforma te brinda las herramientas necesarias para dominarlo, con contenido actualizado y metodología comprobada que garantiza tu éxito.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="image-section">
+        <div class="image-wrapper">
+          <img src="https://images.unsplash.com/photo-1650600538903-ec09f670c391?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9ncmFtbWluZyUyMGNvZGUlMjBzY3JlZW58ZW58MXx8fHwxNzU2ODc5NjY1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" alt="Programación y tecnología">
+          <div class="stats-overlay">
+            <div class="stat">
+              <div class="number">95%</div>
+              <div class="label">Aprobación</div>
+            </div>
+            <div class="stat">
+              <div class="number">1000+</div>
+              <div class="label">Graduados</div>
+            </div>
+            <div class="stat">
+              <div class="number">24/7</div>
+              <div class="label">Acceso</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
