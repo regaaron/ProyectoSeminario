@@ -1,11 +1,35 @@
-.register-container {
+.login-page {
+  position: relative; /* necesario para el overlay */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   height: 100vh;
-  padding-top: 60px;
-  background: linear-gradient(35deg, #000000 70%, #0ae98a 100%);
+
+  /* Imagen de fondo */
+  background-image: url("../../assets/image.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden; /* evita que el overlay se salga */
+}
+
+/* Overlay oscuro sutil */
+.login-page::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* color negro semi-transparente */
+  z-index: 0;
+}
+
+/* Contenido por encima del overlay */
+.login-page > * {
+  position: relative;
+  z-index: 1;
 }
 
 .register-box {
