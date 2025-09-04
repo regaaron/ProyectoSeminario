@@ -1,1 +1,9 @@
-<p>inicio works!</p>
+<!-- imprimimos infomarcion del usuario  -->
+ 
+<div *ngIf="user; else noUser">
+      <h2>Bienvenido, {{ user.displayName || user.email }}</h2>
+      <p>UID: {{ user.uid }}</p>
+    </div>
+    <ng-template #noUser>
+      <p>No hay usuario en sesión</p>
+    </ng-template>
