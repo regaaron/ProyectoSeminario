@@ -14,5 +14,14 @@ import { TestimoniosComponent } from '../testimonios/testimonios.component';
   styleUrl: './landing-page.component.css'
 })
 export class LandingPageComponent {
+menuOpen = false;
+
+toggleMenu() {
+  this.menuOpen = !this.menuOpen;
+}
+
+closeMenu() {
+  this.menuOpen = false;
+}
 
 }

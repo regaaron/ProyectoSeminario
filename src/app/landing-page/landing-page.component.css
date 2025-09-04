@@ -1,78 +1,143 @@
-nav {
-  color: white;
-  padding: 10px;
+/* NAV GENERAL */
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 20px;
+  background-color: #000;
+  color: white;
   position: sticky;
-  top: 0;               /* se pega al top de la ventana */
-  z-index: 1000; 
-  background-color: #000;   
-  border-bottom: 1px solid #0ae98a;    
-   
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #0ae98a;
 }
 
-
-
-.bg-gris{
-    background-color: #1e2229;
-}
-
+/* LOGO */
 .logo {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 10px;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.logo h2 {
-  /* background: linear-gradient(90deg, #00f0ff, #9b00ff, #ff00d4); */
-  
-  -webkit-background-clip: text;
-  font-size: 24px;
-  font-weight: bold;
-  color: #0ae98a;
 }
 
 .logo img {
   width: 80px;
   height: 80px;
-  margin-right: 10px;
 }
 
+.logo h2 {
+  color: #0ae98a;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+/* MENU PRINCIPAL */
+.secciones ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.secciones a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: sans-serif;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.secciones a:hover {
+  color: #0ae98a;
+}
+
+/* BOTONES LOGIN/SIGNUP */
 .nav-links {
   display: flex;
   gap: 20px;
 }
-
-.text-neon {
-  color: #00f0ff;
-}
-
-.text-neon-gradient {
-  background: linear-gradient(90deg, #00fff0, #ff00d4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: bold;
-}
-
 
 .btn-neon {
   background-color: #0ae98a;
   border: none;
   color: black;
   font-weight: bold;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: pulseNeon 2.5s ease-in-out infinite alternate;
+  padding: 8px 16px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .btn-neon:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px color: #0ae98a;
+  box-shadow: 0 0 15px #0ae98a, 0 0 30px #03481d;
 }
 
+/* HAMBURGUESA */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: #0ae98a;
+  border-radius: 2px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .secciones,
+  .nav-links {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    background-color: #000;
+    flex-direction: column;
+    width: 200px;
+    padding: 10px;
+    border-left: 1px solid #0ae98a;
+    border-bottom: 1px solid #0ae98a;
+    display: none;
+  }
+
+  .secciones.active,
+  .nav-links.active {
+    display: flex;
+    animation: slideIn 0.3s ease forwards;
+  }
+
+  .secciones ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-links {
+    margin-top: 10px;
+    gap: 10px;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+/* HIGHLIGHTS NEON */
 @keyframes pulseNeon {
   from {
     box-shadow: 0 0 10px #0ae98a, 0 0 20px #03481d;
@@ -82,11 +147,13 @@ nav {
   }
 }
 
+/* HERO SECTION */
 .hero-section {
   padding: 100px 20px;
   background: radial-gradient(ellipse at center, #111 0%, #000 100%);
 }
 
+/* CREADORES */
 .creadores-container h2 {
   font-size: 3rem;
   font-weight: bold;
@@ -123,38 +190,11 @@ nav {
 }
 
 .creator-card img {
-
   height: 250px;
   object-fit: cover;
 }
 
-/* Quitar estilos predeterminados del <ul> y <li> */
-.secciones ul {
-  list-style: none;      /* quita los bullets */
-  padding: 0;
-  margin: 0;
-  display: flex;         /* para mostrar horizontal */
-  gap: 20px;             /* espacio entre elementos */
-}
-
-/* Quitar estilos predeterminados de los <a> */
-.secciones a {
-  color: inherit;        /* hereda color del contenedor */
-  text-decoration: none; /* quita subrayado */
-  font-size: 18px;
-  font-weight: 500;
-  font-family: sans-serif;
-  cursor: pointer;
-  transition: color 0.3s; /* efecto suave al hover */
-}
-
-/* Efecto hover opcional */
-.secciones a:hover {
-  color: #0ae98a;        /* color rosa neón por ejemplo */
-}
-
-
-/* Animación del borde */
+/* NEON BORDER ANIMATION */
 @keyframes neon-border {
   0% {
     box-shadow: 0 0 5px #0ae98a, 0 0 10px #0ae98a;
@@ -164,6 +204,42 @@ nav {
   }
   100% {
     box-shadow: 0 0 5px #0ae98a, 0 0 10px #0ae98a;
+  }
+}
+
+/* HERO SECTION */
+.hero-section {
+  padding: 100px 20px; /* padding por defecto para desktop */
+  background: radial-gradient(ellipse at center, #111 0%, #000 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh; /* asegura que siempre ocupe parte de la pantalla */
+  max-height: fit-content;
+}
+
+/* RESPONSIVE HERO PARA MÓVILES */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 15px;
+    min-height: 60vh; /* reduce altura en móviles */
+  }
+
+  .creadores-container h2 {
+    font-size: 2rem; /* reduce tamaño de texto en móviles */
+  }
+
+  .creator-card {
+    max-width: 90%; /* ajusta ancho de cards en móviles */
+    margin: 2rem auto;
+  }
+
+  .carousel-item img {
+    height: auto; /* para que las imágenes no estiren la sección */
+    max-height: 250px;
+    width: 100%;
+    object-fit: cover;
   }
 }
 
