@@ -1,0 +1,23 @@
+<section id="caracteristicas" class="caracteristicas-section">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="title">Características</h2>
+      <p class="subtitle">
+        Todo lo que necesitas para prepararte y aprobar el EGEL en Sistemas Computacionales
+      </p>
+    </div>
+
+    <div class="features-grid">
+      <div *ngFor="let feature of features" class="feature-card">
+        <div class="feature-glow"></div>
+        <div class="feature-content">
+          <div class="icon-wrapper">
+            <i class="fa-solid" [ngClass]="feature.icon"></i>
+          </div>
+          <h3 class="feature-title">{{ feature.title }}</h3>
+          <p class="feature-description">{{ feature.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
