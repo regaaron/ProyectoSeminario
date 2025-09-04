@@ -4,6 +4,11 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;               /* se pega al top de la ventana */
+  z-index: 1000; 
+  background-color: #000;   
+  border: 1px solid #0ae98a;    
 }
 
 .bg-gris{
