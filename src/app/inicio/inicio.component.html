@@ -3,6 +3,14 @@
 <div *ngIf="user; else noUser">
       <h2>Bienvenido, {{ user.displayName || user.email }}</h2>
       <p>UID: {{ user.uid }}</p>
+      <p>Email: {{ user.email }}</p>
+      <p>Teléfono: {{ user.phoneNumber || 'No proporcionado' }}</p>
+      <p>Proveedor: {{ user.providerData[0]?.providerId }}</p>
+      <p>Email verificado: {{ user.emailVerified ? 'Sí' : 'No' }}</p>
+      <p>Cuenta creada: {{ user.metadata.creationTime }}</p>
+      <p>Último inicio de sesión: {{ user.metadata.lastSignInTime }}</p>
+      <p>Foto de perfil:</p>
+      <img *ngIf="user.photoURL" [src]="user.photoURL" alt="Foto de perfil" width="100" height="100" />
     </div>
     <ng-template #noUser>
       <p>No hay usuario en sesión</p>
