@@ -19,5 +19,6 @@ export class InicioComponent {
   //obtener usuario al iniciar el componente
   ngOnInit() {
     this.user = this.authService.currentUser;
+    console.log("user en inicio", this.user);
   }
 }

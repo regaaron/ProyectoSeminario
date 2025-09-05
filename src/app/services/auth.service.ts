@@ -10,6 +10,7 @@ export class AuthService {
 
 
    currentUser: User | null = null; // 🔹 aquí guardamos el usuario actual
+
    private apiUrl = 'http://localhost:3000/auth'; // tu backend Node
 
    //injectamos Auth y HttpClient auth para firebase y http para llamadas a api
@@ -25,7 +26,9 @@ export class AuthService {
     //guardar en result el usuario autenticado
     const result = await signInWithEmailAndPassword(this.auth,email,password);
     const user = result.user;
+    //console.log('User logged in:', user);
     await this.saveUserToBackend(user); //llamamos a la función para guardar en backend
+    await this.updateUserStreak(user.uid, await getIdToken(user)); //inicializamos el streak en 0
     return user;
   }
 
@@ -36,7 +39,9 @@ export class AuthService {
     const provider = new GoogleAuthProvider();
     const result = await signInWithPopup(this.auth,provider);
     const user = result.user;
+    //console.log('User logged in with Google:', user);
     await this.saveUserToBackend(user); //llamamos a la función para guardar en backend
+    await this.updateUserStreak(user.uid, await getIdToken(user)); //inicializamos el streak en 0
     return user;
   }
 
@@ -51,7 +56,10 @@ export class AuthService {
     //guardar en result el usuario creado
     const result = await createUserWithEmailAndPassword(this.auth,email,password);
     const user = result.user;
+    //console.log('Usuario registrado:', user);
     await this.saveUserToBackend(user); //llamamos a la función para guardar en backend
+    await this.updateUserStreak(user.uid, await getIdToken(user)); //inicializamos el streak en 0
+
     return user;
   }
 
@@ -82,5 +90,11 @@ export class AuthService {
 
   }
 
+  private async updateUserStreak(uid: string,token: string){
+    return this.http.post(`${this.apiUrl}/updateStreak`,{
+      uid,
+      token
+    }).toPromise();
+  }
 
 }
