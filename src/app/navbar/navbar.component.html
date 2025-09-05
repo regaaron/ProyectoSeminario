@@ -7,15 +7,31 @@
   <div class="menu-toggle" (click)="menuOpen = !menuOpen">
     <span></span><span></span><span></span>
   </div>
+<ul class="nav-links" [class.open]="menuOpen">
+  <li><a routerLink="/main/Inicio" routerLinkActive="active" (click)="menuOpen=false">Inicio</a></li>
+  <li><a routerLink="/main/Temas" routerLinkActive="active2" (click)="menuOpen=false">Temas</a></li>
+  <li><a routerLink="/Simulador" routerLinkActive="active" (click)="menuOpen=false">Simulador</a></li>
+  <li><a routerLink="/Resultados" routerLinkActive="active" (click)="menuOpen=false">Resultados</a></li>
 
-  <ul class="nav-links" [class.open]="menuOpen">
-    <li><a routerLink="/main/Inicio" routerLinkActive="active" (click)="menuOpen=false">Inicio</a></li>
-    <li><a routerLink="/main/Temas" routerLinkActive="active2" (click)="menuOpen=false">Temas</a></li>
-    <li><a routerLink="/Simulador" routerLinkActive="active" (click)="menuOpen=false">Simulador</a></li>
-    <li><a routerLink="/Resultados" routerLinkActive="active" (click)="menuOpen=false">Resultados</a></li>
-    <li><a routerLink="/Resultados" routerLinkActive="active" (click)="menuOpen=false">Resultados2</a></li>
-    <li><a routerLink="/Resultados" routerLinkActive="active" (click)="menuOpen=false">Resultados3</a></li>
-    <li><a  routerLinkActive="active" (click)="logout(); menuOpen=false">Cerrar Sesión</a></li>
+  <!-- Racha -->
+  <li>
+    <div class="racha">
+      <i class="fa-solid fa-fire" ></i> <!-- Icono de llama -->
+      {{ racha }} <!-- variable de tu componente -->
+    </div>
+  </li>
 
-  </ul>
+  <!-- Imagen de perfil -->
+  <li>
+    <div class="perfil">
+      <img [src]="user?.photoURL || '../../assets/omar.jpg'" alt="Perfil" class="perfil-img">
+    </div>
+  </li>
+
+  <!-- Cerrar sesión -->
+  <li>
+    <a routerLinkActive="active" (click)="logout(); menuOpen=false">Cerrar Sesión</a>
+  </li>
+</ul>
+
 </nav>
