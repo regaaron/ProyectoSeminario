@@ -121,3 +121,36 @@
     padding: 0.5rem 0;
   }
 }
+
+.racha {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: linear-gradient(135deg, #ff4e50, #f9d423);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 0 10px #ff4e50, 0 0 20px #f9d423;
+  font-size: 0.9rem;
+}
+
+.racha i {
+  color: white;
+  animation: fire-pulse 1s infinite alternate;
+}
+
+/* Animación sutil de la llama */
+@keyframes fire-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.perfil-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #0ae98a;
+  object-fit: cover;
+}

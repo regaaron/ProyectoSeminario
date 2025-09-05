@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Auth, GoogleAuthProvider, signInWithPopup ,signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, User, getIdToken, onAuthStateChanged } from '@angular/fire/auth';
+import { Auth, GoogleAuthProvider, signInWithPopup ,signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, User, getIdToken, onAuthStateChanged, updateProfile } from '@angular/fire/auth';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -52,10 +52,12 @@ export class AuthService {
 
 
     // 🔹 Registro con correo
-  async registerEmail(email: string, password: string){
+  async registerEmail(email: string, password: string,name: string){
     //guardar en result el usuario creado
     const result = await createUserWithEmailAndPassword(this.auth,email,password);
     const user = result.user;
+    await updateProfile(user, { displayName: name });
+     // Actualiza el nombre del usuario
     //console.log('Usuario registrado:', user);
     await this.saveUserToBackend(user); //llamamos a la función para guardar en backend
     await this.updateUserStreak(user.uid, await getIdToken(user)); //inicializamos el streak en 0

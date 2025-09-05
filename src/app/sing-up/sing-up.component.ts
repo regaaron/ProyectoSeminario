@@ -29,7 +29,7 @@ export class SingUpComponent {
       return;
     }
 
-    this.authService.registerEmail(this.email,this.password)
+    this.authService.registerEmail(this.email,this.password,this.name)
     .then(res=>{
       console.log('Usuario registrado ✅',res);
       this.router.navigate(['/main/Inicio']); // redirige a main o a donde quieras
