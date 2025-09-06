@@ -1,0 +1,132 @@
+.background-grid {
+  height: 80vh;
+  display: flex;
+  justify-content: center; /* centrado horizontal */
+  align-items: center;     /* centrado vertical */
+  z-index: -1; /* queda detrás del examen y navbar */
+  
+  background-image: 
+    linear-gradient(to right, rgba(0, 230, 118, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 230, 118, 0.15) 1px, transparent 1px);
+  background-size: 3rem 3rem; /* cuadritos más pequeños */
+  
+  /* efecto glow */
+  box-shadow: inset 0 0 30px rgba(0, 230, 118, 0.2);
+  
+  /* degradado radial para dar sensación futurista */
+  -webkit-mask-image: radial-gradient(circle at center, #000 80%, transparent 100%);
+  mask-image: radial-gradient(circle at center, #000 80%, transparent 100%);
+}
+
+
+.examen-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: hsla(154, 98%, 16%, 0.616);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  border-radius: 20px;
+  border: #00e676 2px solid;
+  
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+.pregunta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.pregunta-titulo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  margin: 0;
+}
+
+.seleccion-tipo {
+  background-color: #00e676;
+  color: #0d1a49;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.respuestas-grid {
+  display: grid;
+  gap: 15px;
+}
+
+.respuesta-opcion-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 20px;
+  transition: background-color 0.3s, border-color 0.3s;
+  cursor: pointer;
+}
+
+.respuesta-opcion-card:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.respuesta-opcion-card.seleccionada {
+  border-color: #00e676;
+}
+
+.respuesta-radio {
+  display: none;
+}
+
+.respuesta-label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.footer-navegacion {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-navegacion {
+  padding: 10px 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-navegacion.anterior {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.btn-navegacion.siguiente {
+  background-color: #00e676;
+  color: #0d1a49;
+}
+
+.progreso {
+  text-align: center;
+}
+
+.progreso-texto {
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: block;
+  margin-top: 5px;
+}

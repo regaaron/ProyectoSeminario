@@ -8,6 +8,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { TemasComponent } from './temas/temas.component';
 import { authGuard } from './guards/auth.guard';
 import { RecoverpasswordComponent } from './recoverpassword/recoverpassword.component';
+import { ExamenComponent } from './examen/examen.component';
 
 
 export const routes: Routes = [
@@ -24,6 +25,7 @@ export const routes: Routes = [
             {path: '', redirectTo: 'Inicio', pathMatch: 'full'}, // Redirect to Inicio by default
             {path: 'Inicio',  component: InicioComponent},
             {path: 'Temas', component: TemasComponent}, // Assuming InicioComponent is used for Temas as well
+            {path: 'Examen', component: ExamenComponent},
         ]
     },/// Assuming Navbar is part of the landing page
     
