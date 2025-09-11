@@ -1,17 +1,20 @@
-<!-- imprimimos infomarcion del usuario  -->
- 
-<div *ngIf="user; else noUser">
-      <h2>Bienvenido, {{ user.displayName || user.email }}</h2>
-      <p>UID: {{ user.uid }}</p>
-      <p>Email: {{ user.email }}</p>
-      <p>Teléfono: {{ user.phoneNumber || 'No proporcionado' }}</p>
-      <p>Proveedor: {{ user.providerData[0]?.providerId }}</p>
-      <p>Email verificado: {{ user.emailVerified ? 'Sí' : 'No' }}</p>
-      <p>Cuenta creada: {{ user.metadata.creationTime }}</p>
-      <p>Último inicio de sesión: {{ user.metadata.lastSignInTime }}</p>
-      <p>Foto de perfil:</p>
-      <img *ngIf="user.photoURL" [src]="user.photoURL" alt="Foto de perfil" width="100" height="100" />
+<div class="background-grid">
+
+  <div *ngIf="user; else noUser" class="user-profile">
+    <img *ngIf="user.photoURL" [src]="user.photoURL" alt="Foto de perfil" />
+    
+    <div class="info">
+      <h2>{{ user.displayName || user.email }}</h2>
+      <input type="text" readonly [value]="'Email: ' + user.email">
+      <input type="text" readonly [value]="'Teléfono: ' + (user.phoneNumber || 'No proporcionado')">
+      <input type="text" readonly [value]="'Proveedor: ' + (user.providerData[0]?.providerId)">
+      <input type="text" readonly [value]="'Email verificado: ' + (user.emailVerified ? 'Sí' : 'No')">
+      <input type="text" readonly [value]="'Cuenta creada: ' + user.metadata.creationTime">
+      <input type="text" readonly [value]="'Último inicio de sesión: ' + user.metadata.lastSignInTime">
     </div>
-    <ng-template #noUser>
-      <p>No hay usuario en sesión</p>
-    </ng-template>
+  </div>
+
+  <ng-template #noUser>
+    <p style="text-align:center; color:#fff;">No hay usuario en sesión</p>
+  </ng-template>
+</div>
