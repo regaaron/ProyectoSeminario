@@ -1,13 +1,25 @@
 import { Component } from '@angular/core';
 import { ExamenService } from '../services/examen.service';
 import { CommonModule } from '@angular/common';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-examen',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './examen.component.html',
-  styleUrl: './examen.component.css'
+  styleUrl: './examen.component.css',
+  animations: [
+    trigger('fadeSlide', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(20px)' }),
+        animate('600ms cubic-bezier(0.68, -0.65, 0.27, 1.55)', style({ opacity: 1, transform: 'translateX(0)' }))
+      ]),
+      transition(':leave', [
+        animate('0ms ease-in', style({ opacity: 0, transform: 'translateX(-20px)' }))
+      ])
+    ])
+  ]
 })
 export class ExamenComponent {
 
@@ -62,6 +74,10 @@ export class ExamenComponent {
   // Method to check if a specific answer is selected
   isRespuestaSeleccionada(preguntaId: number, respuestaId: number): boolean {
     return this.userAnswers[preguntaId] === respuestaId;
+  }
+
+  trackByPregunta(index: number, item: any) {
+    return item.id_pregunta; // o cualquier id único de la pregunta
   }
 
 }

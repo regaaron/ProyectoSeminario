@@ -1,43 +1,51 @@
 <div class="background-grid">
+  <div class="examen-container" *ngIf="examen.length > 0">
 
-    <div class="examen-container">
-        <div *ngIf="examen.length > 0">
-            <div class="pregunta-header">
-      <h2 class="pregunta-titulo">{{ currentQuestionIndex + 1 }}. {{ examen[currentQuestionIndex].pregunta_enunciado }}</h2>
-      <span class="seleccion-tipo">Selección única</span>
-    </div>
+    <!-- Forzar recreación con *ngFor y trackBy -->
+    <div *ngFor="let pregunta of [examen[currentQuestionIndex]]; trackBy: trackByPregunta" [@fadeSlide]>
 
-    <div class="respuestas-grid">
-      <div *ngFor="let respuesta of examen[currentQuestionIndex].respuestas" 
-           class="respuesta-opcion-card"
-           [class.seleccionada]="isRespuestaSeleccionada(examen[currentQuestionIndex].id_pregunta, respuesta.id_respuesta)"
-           (click)="seleccionarRespuesta(examen[currentQuestionIndex].id_pregunta, respuesta.id_respuesta)">
-
-        <input type="radio" 
-               [id]="'r' + respuesta.id_respuesta" 
-               [name]="'pregunta' + examen[currentQuestionIndex].id_pregunta"
-               class="respuesta-radio"
-               [checked]="isRespuestaSeleccionada(examen[currentQuestionIndex].id_pregunta, respuesta.id_respuesta)">
-
-               <label [for]="'r' + respuesta.id_respuesta" class="respuesta-label">
-                   {{ respuesta.respuesta_texto }}
-                </label>
+      <div class="pregunta-header">
+        <h2 class="pregunta-titulo">
+          {{ currentQuestionIndex + 1 }}. {{ pregunta.pregunta_enunciado }}
+        </h2>
+        <span class="seleccion-tipo">Selección única</span>
       </div>
-    </div>
+
+      <div class="respuestas-grid">
+        <div *ngFor="let respuesta of pregunta.respuestas"
+             class="respuesta-opcion-card"
+             [class.seleccionada]="isRespuestaSeleccionada(pregunta.id_pregunta, respuesta.id_respuesta)"
+             (click)="seleccionarRespuesta(pregunta.id_pregunta, respuesta.id_respuesta)">
+
+          <input type="radio"
+                 [id]="'r' + respuesta.id_respuesta"
+                 [name]="'pregunta' + pregunta.id_pregunta"
+                 class="respuesta-radio"
+                 [checked]="isRespuestaSeleccionada(pregunta.id_pregunta, respuesta.id_respuesta)">
+
+          <label [for]="'r' + respuesta.id_respuesta" class="respuesta-label">
+            {{ respuesta.respuesta_texto }}
+          </label>
+        </div>
+      </div>
+
+    </div> <!-- Fin del fadeSlide -->
+
+    <!-- Footer navegación -->
     <div class="footer-navegacion">
-      <button class="btn-navegacion anterior" 
+      <button class="btn-navegacion anterior"
               [disabled]="currentQuestionIndex === 0"
               (click)="preguntaAnterior()">Anterior</button>
-      
+
       <div class="progreso">
-          Progreso
+        Progreso
         <span class="progreso-texto">{{ answeredQuestionsCount }} de {{ examen.length }} respondidas</span>
       </div>
-      
-      <button class="btn-navegacion siguiente" 
+
+      <button class="btn-navegacion siguiente"
               [disabled]="currentQuestionIndex === examen.length - 1"
               (click)="siguientePregunta()">Siguiente</button>
     </div>
+
   </div>
-</div>
 </div>

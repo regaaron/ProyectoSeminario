@@ -1,15 +1,153 @@
-p{
-    color: white;
+.background-grid {
+  height: 110vh;
+  display: flex;
+  justify-content: center; /* centrado horizontal */
+  align-items: center;     /* centrado vertical */
+  z-index: -1; /* queda detrás del examen y navbar */
+  
+  background-image: 
+    linear-gradient(to right, rgba(230, 0, 211, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(230, 0, 211, 0.15) 1px, transparent 1px);
+  background-size: 3rem 3rem; /* cuadritos más pequeños */
+  
+  /* efecto glow */
+  box-shadow: inset 0 0 30px rgba(0, 230, 118, 0.2);
+  
+  /* degradado radial para dar sensación futurista */ 
+  -webkit-mask-image: radial-gradient(circle at center, #000 80%, transparent 100%);
+  mask-image: radial-gradient(circle at center, #000 80%, transparent 100%);
 }
 
-h2 {
-    font-size: 2.5rem;
+.user-profile {
+  max-width: 750px;
+  width: 95%;
+  margin: 30px auto 50px auto;
+  padding: 30px;
+  background: rgba(0,0,0,0.85);
+  border-radius: 25px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 35px rgba(128,0,128,0.6), inset 0 0 20px rgba(128,0,128,0.2);
+  font-family: 'Arial', sans-serif;
+}
+
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Imagen a la izquierda centrada verticalmente */
+.user-profile img {
+  flex-shrink: 0;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 3px solid #d27fff;
+  object-fit: cover;
+  box-shadow: 0 0 40px #a64edb, 0 0 60px rgba(214,127,255,0.4);
+  animation: pulseGlow 2s infinite alternate;
+  transition: transform 0.3s;
+}
+
+/* Foto con efecto hover */
+.user-profile img:hover {
+  transform: scale(1.3);
+  box-shadow: 0 0 60px #d27fff, 0 0 80px rgba(214,127,255,1);
+}
+
+/* Contenedor de info ocupa el resto del espacio */
+.user-profile .info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Glow animado de fondo */
+.user-profile::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(214,127,255,0.15) 0%, transparent 70%);
+  animation: rotateGlow 10s linear infinite;
+  z-index: 0;
+}
+
+/* Nombre destacado con efecto glow */
+.user-profile h2 {
+  font-size: 2rem;
+  color: #d27fff;
+  margin: 0 0 15px 0;
+  text-align: left;
+  /* text-shadow: 0 0 5px #fff, 0 0 10px #d27fff, 0 0 20px rgba(214,127,255); */
+  letter-spacing: 1px;
+}
+
+/* Inputs como tarjetas flotantes con fadeSlide */
+.user-profile input {
+  width: 100%;
+  padding: 12px 20px 12px 45px;
+  border-radius: 15px;
+  border: 1px solid #d27fff;
+  background: rgba(0,0,0,0.25);
+  color: #fff;
+  font-size: 1rem;
+  text-align: left;
+  outline: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: translateX(30px);
+  animation: fadeSlide 0.8s forwards;
+}
+
+/* Retraso para animación secuencial */
+.user-profile input:nth-child(2) { animation-delay: 0.1s; }
+.user-profile input:nth-child(3) { animation-delay: 0.2s; }
+.user-profile input:nth-child(4) { animation-delay: 0.3s; }
+.user-profile input:nth-child(5) { animation-delay: 0.4s; }
+.user-profile input:nth-child(6) { animation-delay: 0.5s; }
+.user-profile input:nth-child(7) { animation-delay: 0.6s; }
+
+/* FadeSlide Animation */
+@keyframes fadeSlide {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Hover cards glow */
+.user-profile input:hover {
+  background: rgba(214,127,255,0.15);
+  border-color: #d27fff;
+  box-shadow: 0 0 15px #d27fff, 0 0 30px rgba(214,127,255,0.7);
+}
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+  .user-profile {
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    margin-bottom: 1rem;
-    font-weight: bold;
-    background: linear-gradient(135deg, #00ff88, #00ffaa 30%, #00ffcc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 8px #00ff88;
+  }
+  .user-profile .info {
+    width: 100%;
+  }
+  .user-profile img {
+    margin-bottom: 20px;
+  }
+  .user-profile h2 {
+    text-align: center;
+  }
+  .user-profile input {
+    padding-left: 40px;
+  }
 }
-
