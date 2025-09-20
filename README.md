@@ -1,27 +1,62 @@
-# ProyectoSeminario
+# 🎓 EGEL PRO
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.3.
+Plataforma web para apoyar a estudiantes en la **preparación del examen EGEL** y otras certificaciones.  
+Este repositorio corresponde al **frontend** del proyecto.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 📖 Descripción
 
-## Code scaffolding
+EGEL PRO es una aplicación educativa diseñada para ayudar a los estudiantes a repasar y reforzar sus conocimientos antes de presentar exámenes de titulación o certificaciones.  
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+La plataforma ofrece:
+- Preguntas diarias para investigación y estudio.
+- Simulacros de examen con preguntas de opción múltiple.
+- Repaso de términos y conceptos clave en Ingeniería en Sistemas.
+- Un sistema de seguimiento del avance del estudiante.
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🛠️ Tecnologías
 
-## Running unit tests
+- **Frontend**: Angular 17
+- **Estilos**: Bootstrap 5, animaciones con CSS/JS  
+- **Backend**: Node.js (repositorio separado)  
+- **Base de datos**: SQL  
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+---
 
-## Running end-to-end tests
+## 🚀 Instalación
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. Clonar el repositorio:  
+   ```bash
+   git clone https://github.com/regaaron/EGEL-PRO.git
 
-## Further help
+2. Instalar dependencias:
+   ```bash
+    npm install
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+3. Ejecutar el servidor de desarrollo:
+    ```bash
+      ng serve
+
+
+4. Abrir en el navegador:
+
+http://localhost:4200
+
+🔗 Backend
+
+El backend del proyecto y DB se encuentra en:
+👉 EGEL PRO Backend
+ (https://github.com/regaaron/egelpro-backend)
+
+📷 Imágenes
+
+Agrega aquí capturas de pantalla o mockups del sistema:
+
+<img width="1901" height="906" alt="Landing-page" src="https://github.com/user-attachments/assets/7a4fcb42-eac7-48ab-80df-f640fabd63bd" />
+<img width="1896" height="909" alt="login" src="https://github.com/user-attachments/assets/5066e58c-3b0c-4dc3-8c2d-1e108cf5ce7f" />
+<img width="1902" height="874" alt="Captura de pantalla 2025-09-18 200517" src="https://github.com/user-attachments/assets/5e5c379a-e855-4a30-b591-4c2c8dd81903" />
+<img width="1894" height="892" alt="Captura de pantalla 2025-09-18 200531" src="https://github.com/user-attachments/assets/4df5d41a-5dec-4822-a1fb-550adbdbed7a" />
