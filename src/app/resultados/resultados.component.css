@@ -1,0 +1,180 @@
+@import "gridstack/dist/gridstack.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap'); /* Añadido 700 */
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0d0d0d;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  overflow-x: hidden; /* Evitar scroll horizontal no deseado */
+ 
+}
+
+
+.title {
+  text-align: center;
+  margin: 40px 0 30px; /* Más espacio */
+  font-size: 2.8rem; /* Tamaño de título más grande */
+  font-weight: 700; /* Más peso para el título */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.neon-text {
+  color: #00f7ff;
+  text-shadow: 0 0 10px #00f7ff, 0 0 30px #00f7ff, 0 0 50px rgba(0, 247, 255, 0.4);
+}
+
+/* Fondo del grid */
+.grid-stack {
+  min-height: 800px; /* Aumentado para más contenido */
+  padding: 25px; /* Más padding */
+  border: 2px dashed #333; /* Borde más sutil */
+  background: linear-gradient(135deg, #101010, #181818);
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(0, 247, 255, 0.1); /* Sutil sombra para el grid */
+}
+
+/* Contenedor de cada widget */
+.grid-stack-item {
+  border: none;
+  background: transparent;
+  /* Asegurar que el contenido respete los límites del item para el resize handle */
+}
+
+/* Contenido dentro del widget */
+.grid-stack-item-content {
+  background: #1f1f1f; /* Fondo ligeramente más oscuro */
+  border: 2px solid #00f7ff;
+  border-radius: 18px; /* Bordes más redondeados */
+  padding: 25px; /* Más padding interno */
+  display: flex; /* Usar flexbox para centrar y organizar */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Asegurar que el contenido ocupa todo el item */
+  text-align: center;
+  color: #e0e0e0; /* Color de texto más claro */
+  box-shadow: 0 0 15px rgba(0, 247, 255, 0.3),
+              inset 0 0 10px rgba(0, 247, 255, 0.15);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  position: relative; /* Importante para posicionar elementos internos */
+  overflow: hidden; /* Ocultar desbordamientos si el contenido es muy grande */
+}
+
+.grid-stack-item-content:hover {
+  transform: translateY(-8px) scale(1.02); /* Más elevación y ligero zoom */
+  box-shadow: 0 0 25px rgba(0, 247, 255, 0.7),
+              inset 0 0 15px rgba(0, 247, 255, 0.25);
+}
+
+.card-title {
+  font-size: 1.6rem; /* Títulos más grandes */
+  margin-bottom: 12px;
+  color: #ff33ff; /* Color de título más vibrante */
+  text-shadow: 0 0 8px #ff33ff, 0 0 16px rgba(255, 51, 255, 0.4);
+  font-weight: 600;
+}
+
+.card-desc {
+  font-size: 1.05rem; /* Descripción ligeramente más grande */
+  margin-bottom: 20px;
+  color: #c0c0c0;
+  line-height: 1.4;
+}
+
+/* Botón estilo neón */
+.btn-action {
+  background: transparent;
+  border: 2px solid #00f7ff;
+  border-radius: 10px; /* Bordes más redondeados */
+  padding: 10px 20px; /* Más padding */
+  color: #00f7ff;
+  font-weight: 700; /* Más peso */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-action:hover {
+  background: #00f7ff;
+  color: #0d0d0d;
+  box-shadow: 0 0 15px #00f7ff, 0 0 30px #00f7ff;
+  transform: scale(1.05); /* Ligero zoom en hover */
+}
+
+/* Estilos para nuevos widgets (Ej. Gráficas, Notificaciones) */
+.card-chart {
+  /* Estilos específicos para widgets de gráfica si los hubiera */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00f7ff;
+  text-shadow: 0 0 5px #00f7ff;
+}
+.card-chart .placeholder-chart {
+    width: 80%;
+    height: 60%;
+    background: linear-gradient(45deg, #00f7ff22, #ff33ff22);
+    border-radius: 10px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+    color: #00f7ff;
+    border: 1px dashed #00f7ff;
+}
+
+.card-notification {
+  font-size: 1.1rem;
+  text-align: left;
+  padding-left: 15%; /* Alineación de texto en notificaciones */
+  justify-content: flex-start; /* Alinear contenido al inicio */
+}
+.card-notification .notification-item {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.card-notification .notification-item::before {
+    content: '•';
+    color: #ff33ff;
+    margin-right: 10px;
+    font-size: 1.5em;
+    line-height: 1;
+}
+
+/* Manejador de redimensionamiento (GridStack) */
+.grid-stack-item .ui-resizable-handle {
+    opacity: 0.8; /* Siempre visible o al menos semi-visible */
+    background: #00f7ff; /* Color para el handle */
+    border-radius: 50%;
+    width: 16px; /* Tamaño más grande */
+    height: 16px;
+    bottom: -8px; /* Posicionamiento para que se vea bien */
+    right: -8px; /* Posicionamiento para que se vea bien */
+    z-index: 10; /* Asegurar que esté por encima de otros elementos */
+    box-shadow: 0 0 10px #00f7ff;
+    transition: all 0.2s ease-in-out;
+}
+.grid-stack-item .ui-resizable-handle:hover {
+    background: #ff33ff; /* Color diferente en hover */
+    box-shadow: 0 0 15px #ff33ff;
+}
+.grid-stack-item-content .no-btn .btn-action {
+    display: none; /* Para widgets que no necesitan botón */
+}
+
+/* Iconos (si usas Font Awesome o similar) */
+.card-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+    color: #ff33ff;
+    text-shadow: 0 0 10px #ff33ff;
+}

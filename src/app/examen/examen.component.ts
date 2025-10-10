@@ -24,7 +24,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 export class ExamenComponent {
 
   examen: any[] = [];
-  examenId = 1; // ID of the exam to display
+  examenId = 1;// ID of the exam to display
   currentQuestionIndex = 0; // Tracks the current question
   answeredQuestionsCount = 0; // Tracks how many questions have been answered
   userAnswers: { [key: number]: number } = {}; // Stores user's selected answers {preguntaId: respuestaId}

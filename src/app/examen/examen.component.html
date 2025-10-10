@@ -44,7 +44,9 @@
 
       <button class="btn-navegacion siguiente"
               [disabled]="currentQuestionIndex === examen.length - 1"
-              (click)="siguientePregunta()">Siguiente</button>
+              (click)="siguientePregunta()
+              
+              ">{{answeredQuestionsCount == 5 ? 'Finalizar' : 'siguiente'}}</button>
     </div>
 
   </div>
