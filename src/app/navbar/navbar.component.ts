@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'firebase/auth';
+
+import { driver } from "driver.js";
+import "driver.js/dist/driver.css";
+
 
 @Component({
   selector: 'app-navbar',
@@ -11,11 +15,54 @@ import { User } from 'firebase/auth';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
+export class NavbarComponent implements AfterViewInit{
   menuOpen = false;
   racha: number = 0;
   user: User | null = null;
   constructor(private authService: AuthService, private router: Router,private http: HttpClient) { }
+  ngAfterViewInit(): void {
+    
+    const driveObj = driver({
+      showProgress: true,
+      steps:[
+        {
+          element: '#Inicio',
+          popover: {
+            title: 'Inicio',
+            description: 'Aquí puedes ver informacion general de tu perfil',
+            side: 'right'
+          }
+        },
+        {
+          element: '#Temas',
+          popover: {
+            title: 'Temas',
+            description: 'Aqui podras ver los temas y subtemas acerca de este curso',
+            side: 'left'
+          }
+        },
+        {
+          element: '#Examen',
+          popover: {
+            title: 'Examen',
+            description: 'Aqui podras encontrar examenes diferentes cada dia',
+            side: 'right'
+          }
+        },
+        {
+          element: '#Resultados',
+          popover: {
+            title: 'Resultados',
+            description: 'Aqui podras ver tus resultados y racha de examenes',
+            side: 'left'
+          }
+        }
+      ]
+    });
+    
+    driveObj.drive();
+  }
+
 
   logout() {
     this.authService.logOut()
@@ -29,6 +76,7 @@ export class NavbarComponent {
   ngOnInit(){
     this.getRacha(this.authService.currentUser?.uid!);
     this.user=this.authService.currentUser
+
 
   }
 

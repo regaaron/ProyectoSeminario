@@ -1,0 +1,38 @@
+
+
+  <h1 class="title neon-text">{{title}}</h1>
+  
+  <div class="container-fluid p-4"> <gridstack [options]="gridOptions" (changeCB)="onChange($event)">
+    <gridstack-item *ngFor="let n of items; trackBy: identify" [options]="n">
+      <div class="grid-stack-item-content" [ngClass]="n.customClass">
+        <ng-container *ngIf="n.type === 'card'">
+          <h3 class="card-title">{{n.title}}</h3>
+          <p class="card-desc">{{n.desc}}</p>
+          <button class="btn-action">Acceder</button>
+        </ng-container>
+
+        <ng-container *ngIf="n.type === 'chart'">
+          <h3 class="card-title">{{n.title}}</h3>
+          <p class="card-desc">{{n.desc}}</p>
+          <div class="placeholder-chart">
+            Gráfica de {{n.title}}
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="n.type === 'notification'">
+          <h3 class="card-title">{{n.title}}</h3>
+          <div class="notification-item" *ngFor="let item of n.notifications">
+            {{item}}
+          </div>
+        </ng-container>
+        
+        <ng-container *ngIf="n.type === 'metric'">
+            <h3 class="card-title">{{n.title}}</h3>
+            <p class="card-desc" style="font-size: 2.5em; font-weight: bold; color: #00f7ff;">{{n.value}}</p>
+            <p class="card-desc" style="margin-top: -15px;">{{n.desc}}</p>
+        </ng-container>
+
+      </div>
+    </gridstack-item>
+  </gridstack>
+</div>

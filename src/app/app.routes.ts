@@ -9,6 +9,7 @@ import { TemasComponent } from './temas/temas.component';
 import { authGuard } from './guards/auth.guard';
 import { RecoverpasswordComponent } from './recoverpassword/recoverpassword.component';
 import { ExamenComponent } from './examen/examen.component';
+import { ResultadosComponent } from './resultados/resultados.component';
 
 
 export const routes: Routes = [
@@ -26,6 +27,7 @@ export const routes: Routes = [
             {path: 'Inicio',  component: InicioComponent},
             {path: 'Temas', component: TemasComponent}, // Assuming InicioComponent is used for Temas as well
             {path: 'Examen', component: ExamenComponent},
+            {path: 'Resultados',component: ResultadosComponent},
         ]
     },/// Assuming Navbar is part of the landing page
     
