@@ -15,12 +15,26 @@
   
 
   <div *ngIf="temaSeleccionado" class="tema-detalle" id="subtemas">
-    <h2>Subtemas de {{ temaSeleccionado.nombre }}</h2>
+    <div><h2>{{ temaSeleccionado.nombre }}</h2></div>
+    <!-- Botón/tarjeta para examen general del tema -->
+    <div class="subtema-card examen-general"
+         role="button"
+         tabindex="0"
+         (click)="navegarAExamen(null)"
+         (keydown.enter)="navegarAExamen(null)">
+      <h4>Examen del tema completo</h4>
+      <p>Inicia un examen con preguntas de todo el tema</p>
+    </div>
     <div class="subtemas-grid">
-      <div class="subtema-card" *ngFor="let sub of temaSeleccionado.subtemas">
-        <h4>{{ sub.nombre }}</h4>
-        <p>Descripción opcional del subtema</p>
-      </div>
+        <div class="subtema-card"
+             *ngFor="let sub of temaSeleccionado.subtemas"
+             role="button"
+             tabindex="0"
+             (click)="navegarAExamen(sub)"
+             (keydown.enter)="navegarAExamen(sub)">
+          <h4>{{ sub.nombre }}</h4>
+          <p>Descripción opcional del subtema</p>
+        </div>
     </div>
   </div>
 </div>

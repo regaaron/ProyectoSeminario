@@ -26,7 +26,9 @@ export const routes: Routes = [
             {path: '', redirectTo: 'Inicio', pathMatch: 'full'}, // Redirect to Inicio by default
             {path: 'Inicio',  component: InicioComponent},
             {path: 'Temas', component: TemasComponent}, // Assuming InicioComponent is used for Temas as well
-            {path: 'Examen', component: ExamenComponent},
+            // Rutas para Examen que aceptan tema y subtema (subtema opcional)
+            {path: 'Examen/:tema', component: ExamenComponent},
+            {path: 'Examen/:tema/:sub', component: ExamenComponent},
             {path: 'Resultados',component: ResultadosComponent},
         ]
     },/// Assuming Navbar is part of the landing page

@@ -8,6 +8,7 @@ bootstrapApplication(AppComponent, {
   ...appConfig,
   providers: [
     ...(appConfig.providers || []),
-    provideAnimations() // 👈 aquí activas animaciones
+    provideAnimations(), // 👈 aquí activas animaciones
+    provideHttpClient(withFetch())
   ]
 }).catch((err) => console.error(err));
