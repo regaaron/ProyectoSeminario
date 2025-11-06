@@ -7,6 +7,8 @@ import { WhyChooseSeccionComponent } from "../why-choose-seccion/why-choose-secc
 import { TestimoniosComponent } from '../testimonios/testimonios.component';
 import { driver } from "driver.js";
 import "driver.js/dist/driver.css";
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, PLATFORM_ID } from '@angular/core';
 
 
 @Component({
@@ -18,53 +20,59 @@ import "driver.js/dist/driver.css";
 })
 export class LandingPageComponent implements AfterViewInit{
 
-ngAfterViewInit(): void {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-   const seen = localStorage.getItem('tourSeen');
-   if(!seen){
-     const driverObj = driver({
-       showProgress: true,
-      
-      steps: [
-        {
-          element: '#btnStart',
-          popover: {
-            title: 'Comenzar',
-            description: 'Inicia aquí tus actividades',
-            side: 'bottom'
-          }
-        },
-        {
-          element: '#questionsSection',
-          popover: {
-            title: 'Sección de preguntas',
-            description: 'Aquí verás tus preguntas del día.',
-            side: 'right'
-          }
-        },
-        {
-           element: '#about',
-           popover: {
-              title: 'Sección de preguntas',
-              description: 'Aquí verás tus preguntas del día.',
-              side: 'right'
+  ngAfterViewInit(): void {
+    // Solo ejecuta esto si estamos en navegador
+    if (isPlatformBrowser(this.platformId)) {
+
+      const seen = localStorage.getItem('tourSeen');
+      if (!seen) {
+        const driverObj = driver({
+          showProgress: true,
+          steps: [
+            {
+              element: '#btnStart',
+              popover: {
+                title: 'Comenzar',
+                description: 'Inicia aquí tus actividades',
+                side: 'bottom'
+              }
+            },
+            {
+              element: '#questionsSection',
+              popover: {
+                title: 'Sección de preguntas',
+                description: 'Aquí verás tus preguntas del día.',
+                side: 'right'
+              }
+            },
+            {
+              element: '#about',
+              popover: {
+                title: 'Sección de preguntas',
+                description: 'Aquí verás tus preguntas del día.',
+                side: 'right'
+              }
             }
-        }
-      ]
-    });
-    
-    driverObj.drive();
-    localStorage.setItem('tourSeen', 'true'); 
+          ]
+        });
+
+        driverObj.drive();
+        localStorage.setItem('tourSeen', 'true');
+      }
+    } else {
+      console.log('Renderizando en servidor, omitiendo driver.js');
+    }
   }
-}
-menuOpen = false;
 
-toggleMenu() {
-  this.menuOpen = !this.menuOpen;
-}
+  menuOpen = false;
 
-closeMenu() {
-  this.menuOpen = false;
-}
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
 
+  closeMenu() {
+    this.menuOpen = false;
+  }
 }
