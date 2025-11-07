@@ -1,14 +1,19 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { Auth } from '@angular/fire/auth';
+import { Auth, onAuthStateChanged, User } from '@angular/fire/auth';
 import { getIdTokenResult } from 'firebase/auth';
 
 export const adminGuard: CanActivateFn = async (route, state) => {
   const router = inject(Router);
   const auth = inject(Auth);
 
-  // Espera a que Firebase confirme el usuario actual
-  const user = auth.currentUser;
+  // Espera a que Firebase restaure el usuario actual (evita que te saque al login al recargar)
+  const user = await new Promise<User | null>((resolve) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      unsubscribe();
+      resolve(user);
+    });
+  });
 
   if (!user) {
     router.navigate(['/login']);
@@ -20,10 +25,10 @@ export const adminGuard: CanActivateFn = async (route, state) => {
     const isAdmin = tokenResult.claims['admin'] === true;
 
     if (isAdmin) {
-      return true; // ✅ Tiene permiso
+      return true; // ✅ Usuario con rol admin
     } else {
       console.warn('Acceso denegado: no es administrador');
-      router.navigate(['/main']); // O cualquier ruta de usuario normal
+      router.navigate(['/main']);
       return false;
     }
   } catch (error) {
