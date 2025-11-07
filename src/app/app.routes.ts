@@ -10,6 +10,10 @@ import { authGuard } from './guards/auth.guard';
 import { RecoverpasswordComponent } from './recoverpassword/recoverpassword.component';
 import { ExamenComponent } from './examen/examen.component';
 import { ResultadosComponent } from './resultados/resultados.component';
+import { AdminComponent } from './admin/admin.component';
+import { AddTopicsComponent } from './add-topics/add-topics.component';
+import { AddQuestionsComponent } from './add-questions/add-questions.component';
+import { adminGuard } from './guards/admin.guard';
 
 
 export const routes: Routes = [
@@ -32,6 +36,15 @@ export const routes: Routes = [
             {path: 'Resultados',component: ResultadosComponent},
         ]
     },/// Assuming Navbar is part of the landing page
+
+    { path: 'admin', component: AdminComponent,
+        canActivate: [adminGuard], // 🔒 Protegido
+        children:[
+            {path: '',redirectTo: 'addTopics',pathMatch: 'full'},
+            {path: 'addTopics',component: AddTopicsComponent},
+            {path: 'addQuestions',component: AddQuestionsComponent},
+        ]
+    },
     
     { path: '**', pathMatch: 'full', redirectTo: 'landing-page' }
 ];
