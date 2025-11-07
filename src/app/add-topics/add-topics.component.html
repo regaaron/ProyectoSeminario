@@ -1,0 +1,78 @@
+<div class="container py-4">
+  <h2 class="text-center mb-4">Gestión de Temas y Subtemas</h2>
+
+  <!-- Botón para agregar nuevo tema -->
+  <div class="text-end mb-3">
+    <button class="btn btn-primary" (click)="mostrarFormularioTema = !mostrarFormularioTema">
+      <i class="fa fa-plus"></i> Nuevo Tema
+    </button>
+  </div>
+
+  <!-- Formulario para nuevo tema -->
+  <div *ngIf="mostrarFormularioTema" class="card shadow-sm mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Agregar Nuevo Tema</h5>
+      <form (ngSubmit)="agregarTema(); limpiarFormularioTema()">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Nombre del tema" [(ngModel)]="nuevoTema.nombre" name="nombre" required />
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Descripción" [(ngModel)]="nuevoTema.descripcion" name="descripcion" required />
+          </div>
+          <div class="col-md-3">
+            <input type="text" class="form-control" placeholder="Icono (fa-icon)" [(ngModel)]="nuevoTema.icono" name="icono" required />
+          </div>
+          <div class="col-md-1 text-end">
+            <button type="submit" class="btn btn-success w-100" >
+              <i class="fa fa-save"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Lista de temas -->
+  <div class="row g-4">
+    <div class="col-md-6 col-lg-4" *ngFor="let tema of temas">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-2">
+            <i class="fa" [ngClass]="tema.icono + ' fa-2x text-primary me-2'"></i>
+            <div>
+              <h5 class="mb-0">{{ tema.nombre }}</h5>
+              <small class="text-muted">{{ tema.descripcion }}</small>
+            </div>
+          </div>
+
+          <hr />
+
+          <h6>Subtemas:</h6>
+          <ul class="list-group list-group-flush mb-3">
+            <li *ngFor="let sub of tema.subtemas" class="list-group-item d-flex justify-content-between align-items-center">
+              {{ sub.nombre }}
+              <button class="btn btn-sm btn-outline-danger" (click)="eliminarSubtema(tema, sub.id)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </li>
+          </ul>
+
+          <!-- Agregar subtema -->
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Nuevo subtema..." [(ngModel)]="nuevoSubtema[tema.id]" name="subtema-{{ tema.id }}" />
+            <button class="btn btn-outline-success" (click)="agregarSubtema(tema)">
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="card-footer text-end">
+          <button class="btn btn-outline-danger btn-sm" (click)="eliminarTema(tema.id)">
+            <i class="fa fa-trash"></i> Eliminar Tema
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

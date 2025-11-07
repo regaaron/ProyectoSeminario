@@ -23,7 +23,23 @@ export class TemasService {
 
   constructor(private http: HttpClient) { }
 
-  getTemas(): Observable<Tema[]>{
+   getTemas(): Observable<Tema[]> {
     return this.http.get<Tema[]>(this.apiUrl);
+  }
+
+  addTema(tema: Tema): Observable<Tema> {
+    return this.http.post<Tema>(this.apiUrl, tema);
+  }
+
+  deleteTema(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  addSubtema(temaId: number, nombre: string): Observable<Subtema> {
+    return this.http.post<Subtema>(`${this.apiUrl}/${temaId}/subtemas`, { nombre });
+  }
+
+  deleteSubtema(temaId: number, subtemaId: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${temaId}/subtemas/${subtemaId}`);
   }
 }
