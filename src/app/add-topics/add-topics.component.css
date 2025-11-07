@@ -1,0 +1,96 @@
+/* --- Estilos base de las cards --- */
+.card {
+  background-color: #003300; /* Verde oscuro */
+  border: 2px solid #00ff66; /* Borde verde neón */
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 12px #00ff66;
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s;
+  color: #e6ffe6;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px #00ff99;
+}
+
+/* --- Cabecera y cuerpo --- */
+.card-body {
+  padding: 1.2rem;
+}
+
+.card-footer {
+  background-color: rgba(0, 255, 102, 0.1);
+  border-top: 1px solid #00ff66;
+}
+
+/* --- Iconos y textos --- */
+.fa {
+  vertical-align: middle;
+  color: #00ff99;
+}
+
+h5, h6 {
+  color: #00ffcc;
+}
+
+small.text-muted {
+  color: #aaffaa !important;
+}
+
+/* --- Inputs y botones --- */
+input.form-control {
+  background-color: #001a00;
+  color: #ccffcc;
+  border: 1px solid #00ff66;
+  border-radius: 10px;
+}
+
+input.form-control:focus {
+  box-shadow: 0 0 8px #00ff99;
+  border-color: #00ff99;
+  background-color: #002200;
+}
+
+/* Botones */
+.btn-outline-success {
+  border-color: #00ff66;
+  color: #00ff66;
+}
+
+.btn-outline-success:hover {
+  background-color: #00ff66;
+  color: #002200;
+}
+
+.btn-outline-danger {
+  border-color: #ff4444;
+  color: #ff4444;
+}
+
+.btn-outline-danger:hover {
+  background-color: #ff4444;
+  color: white;
+}
+
+/* Lista de subtemas */
+.list-group-item {
+  background-color: #002200;
+  color: #ccffcc;
+  border: 1px solid rgba(0, 255, 102, 0.2);
+}
+
+.list-group-item:hover {
+  background-color: #003300;
+}
+
+/* Botón principal */
+.btn-primary {
+  background-color: #00cc66;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #00ff88;
+  color: #001a00;
+}
