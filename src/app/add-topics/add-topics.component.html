@@ -12,7 +12,7 @@
   <div *ngIf="mostrarFormularioTema" class="card shadow-sm mb-4">
     <div class="card-body">
       <h5 class="card-title">Agregar Nuevo Tema</h5>
-      <form (ngSubmit)="agregarTema(); limpiarFormularioTema()">
+      <form (ngSubmit)="agregarTema()">
         <div class="row g-3">
           <div class="col-md-4">
             <input type="text" class="form-control" placeholder="Nombre del tema" [(ngModel)]="nuevoTema.nombre" name="nombre" required />
@@ -76,3 +76,10 @@
     </div>
   </div>
 </div>
+
+<div *ngIf="cargando" class="spinner-overlay">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Cargando...</span>
+  </div>
+</div>
+

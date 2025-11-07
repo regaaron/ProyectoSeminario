@@ -1,32 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { TemasService } from '../services/temas.service';
+import { TemasService, Tema, Subtema } from '../services/temas.service';
 import { HttpClientModule } from '@angular/common/http';
-
-export interface Subtema {
-  id: number;
-  nombre: string;
-}
-
-export interface Tema {
-  id: number;
-  nombre: string;
-  descripcion: string;
-  icono: string;
-  subtemas: Subtema[];
-}
 
 @Component({
   selector: 'app-add-topics',
   standalone: true,
   imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './add-topics.component.html',
-  styleUrl: './add-topics.component.css'
+  styleUrls: ['./add-topics.component.css']
 })
 export class AddTopicsComponent implements OnInit {
   temas: Tema[] = [];
   mostrarFormularioTema = false;
+  cargando = false;
 
   nuevoTema: Partial<Tema> = {
     nombre: '',
@@ -39,110 +27,58 @@ export class AddTopicsComponent implements OnInit {
 
   constructor(
     private temasService: TemasService,
-    private cdr: ChangeDetectorRef 
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.cargarTemas();
   }
 
-  /**
-   * 🔄 Carga todos los temas desde el servidor
-   */
   cargarTemas(): void {
+    this.cargando = true;
     this.temasService.getTemas().subscribe({
       next: (data) => {
         this.temas = data;
-        
-        // Inicializar nuevoSubtema para cada tema
-        this.temas.forEach(tema => {
-          if (!this.nuevoSubtema[tema.id]) {
+
+        // Inicializa el input de cada tema
+        this.temas.forEach((tema) => {
+          if (!(tema.id in this.nuevoSubtema)) {
             this.nuevoSubtema[tema.id] = '';
           }
         });
 
+        this.cargando = false;
         this.cdr.detectChanges();
       },
-      error: (err) => console.error('Error al cargar temas:', err)
+      error: (err) => {
+        console.error('❌ Error al cargar temas:', err);
+        this.cargando = false;
+      }
     });
   }
 
-  /**
-   * ✅ Agrega un nuevo tema con actualización inmediata
-   */
   agregarTema(): void {
     if (!this.nuevoTema.nombre?.trim() || !this.nuevoTema.descripcion?.trim() || !this.nuevoTema.icono?.trim()) {
       alert('Por favor completa todos los campos');
       return;
     }
 
-    const temaTemporal: Tema = {
-      id: Date.now(), // ID temporal
-      nombre: this.nuevoTema.nombre,
-      descripcion: this.nuevoTema.descripcion,
-      icono: this.nuevoTema.icono,
-      subtemas: []
-    };
-
-    // Actualización optimista
-    this.temas = [...this.temas, temaTemporal];
-    this.nuevoSubtema[temaTemporal.id] = '';
-
-    this.temasService.addTema(temaTemporal).subscribe({
+    this.cargando = true;
+    this.temasService.addTema(this.nuevoTema).subscribe({
       next: (temaCreado) => {
-        // Reemplazar el tema temporal con el real del servidor
-        this.temas = this.temas.map(t => 
-          t.id === temaTemporal.id ? temaCreado : t
-        );
-        
+        this.temas.push(temaCreado);
         this.limpiarFormularioTema();
+        this.cargando = false;
         this.cdr.detectChanges();
-
-  
       },
       error: (err) => {
-        console.error('Error al agregar tema:', err);
-        // Revertir en caso de error
-        this.temas = this.temas.filter(t => t.id !== temaTemporal.id);
+        console.error('❌ Error al agregar tema:', err);
         alert('Error al agregar el tema');
-        this.cdr.detectChanges();
+        this.cargando = false;
       }
     });
   }
 
-  /**
-   * 🗑️ Elimina un tema con actualización inmediata
-   */
-  eliminarTema(id: number): void {
-    if (!confirm('¿Seguro que deseas eliminar este tema y todos sus subtemas?')) return;
-
-    const temaAEliminar = this.temas.find(t => t.id === id);
-    if (!temaAEliminar) return;
-
-    // Actualización optimista
-    this.temas = this.temas.filter(t => t.id !== id);
-    delete this.nuevoSubtema[id];
-
-    this.temasService.deleteTema(id).subscribe({
-      next: () => {
-        this.cdr.detectChanges();
-      },
-      error: (err) => {
-        console.error('Error al eliminar tema:', err);
-        // Revertir en caso de error
-        if (temaAEliminar) {
-          this.temas = [...this.temas, temaAEliminar];
-          this.nuevoSubtema[id] = '';
-        }
-        alert('Error al eliminar el tema');
-        this.cdr.detectChanges();
-      }
-    });
-  }
-
-  /**
-   * ➕ Agrega un subtema con actualización inmediata
-   */
   agregarSubtema(tema: Tema): void {
     const nombreSub = this.nuevoSubtema[tema.id]?.trim();
     if (!nombreSub) {
@@ -150,99 +86,61 @@ export class AddTopicsComponent implements OnInit {
       return;
     }
 
-    const subtemaTemporal: Subtema = {
-      id: Date.now(), // ID temporal
-      nombre: nombreSub
-    };
-
-    // Actualización optimista
-    this.temas = this.temas.map(t => 
-      t.id === tema.id 
-        ? { ...t, subtemas: [...t.subtemas, subtemaTemporal] }
-        : t
-    );
-
+    this.cargando = true;
     this.temasService.addSubtema(tema.id, nombreSub).subscribe({
       next: (subtemaCreado) => {
-        // Reemplazar el subtema temporal con el real
-        this.temas = this.temas.map(t => 
-          t.id === tema.id 
-            ? { 
-                ...t, 
-                subtemas: t.subtemas.map(s => 
-                  s.id === subtemaTemporal.id ? subtemaCreado : s
-                )
-              }
-            : t
-        );
-        
+        tema.subtemas.push(subtemaCreado);
         this.nuevoSubtema[tema.id] = '';
+        this.cargando = false;
         this.cdr.detectChanges();
       },
       error: (err) => {
-        console.error('Error al agregar subtema:', err);
-        // Revertir en caso de error
-        this.temas = this.temas.map(t => 
-          t.id === tema.id 
-            ? { 
-                ...t, 
-                subtemas: t.subtemas.filter(s => s.id !== subtemaTemporal.id) 
-              }
-            : t
-        );
-        alert('Error al agregar el subtema');
-        this.cdr.detectChanges();
+        console.error('❌ Error al agregar subtema:', err);
+        alert('Error al agregar subtema');
+        this.cargando = false;
       }
     });
   }
 
-  /**
-   * ❌ Elimina un subtema con actualización inmediata
-   */
+  eliminarTema(id: number): void {
+    if (!confirm('¿Seguro que deseas eliminar este tema y todos sus subtemas?')) return;
+
+    this.cargando = true;
+    this.temasService.deleteTema(id).subscribe({
+      next: () => {
+        this.temas = this.temas.filter((t) => t.id !== id);
+        delete this.nuevoSubtema[id];
+        this.cargando = false;
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        console.error('❌ Error al eliminar tema:', err);
+        alert('Error al eliminar el tema');
+        this.cargando = false;
+      }
+    });
+  }
+
   eliminarSubtema(tema: Tema, subtemaId: number): void {
     if (!confirm('¿Eliminar este subtema?')) return;
 
-    const subtemaAEliminar = tema.subtemas.find(s => s.id === subtemaId);
-    if (!subtemaAEliminar) return;
-
-    // Actualización optimista
-    this.temas = this.temas.map(t => 
-      t.id === tema.id 
-        ? { ...t, subtemas: t.subtemas.filter(s => s.id !== subtemaId) }
-        : t
-    );
-
-    this.temasService.deleteSubtema(tema.id, subtemaId.toString()).subscribe({
+    this.cargando = true;
+    this.temasService.deleteSubtema(tema.id, subtemaId).subscribe({
       next: () => {
+        tema.subtemas = tema.subtemas.filter((s) => s.id !== subtemaId);
+        this.cargando = false;
         this.cdr.detectChanges();
       },
       error: (err) => {
-        console.error('Error al eliminar subtema:', err);
-        // Revertir en caso de error
-        if (subtemaAEliminar) {
-          this.temas = this.temas.map(t => 
-            t.id === tema.id 
-              ? { ...t, subtemas: [...t.subtemas, subtemaAEliminar] }
-              : t
-          );
-        }
+        console.error('❌ Error al eliminar subtema:', err);
         alert('Error al eliminar el subtema');
-        this.cdr.detectChanges();
+        this.cargando = false;
       }
     });
   }
 
-  /**
-   * 🧹 Limpia el formulario de nuevo tema
-   */
-   limpiarFormularioTema(): void {
-    this.nuevoTema = { 
-      nombre: '', 
-      descripcion: '', 
-      icono: '', 
-      subtemas: [] 
-    };
+  limpiarFormularioTema(): void {
+    this.nuevoTema = { nombre: '', descripcion: '', icono: '', subtemas: [] };
     this.mostrarFormularioTema = false;
-
   }
 }
