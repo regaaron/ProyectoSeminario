@@ -1,0 +1,37 @@
+<nav class="navbar">
+  <div class="logo">
+    <img  src="assets/Logo.png" alt="EGEL PRO Logo" class="logo-icon" />
+    <span class="logo-text">EGEL<br>PRO</span>
+  </div>
+
+  <div class="menu-toggle" (click)="menuOpen = !menuOpen">
+    <span></span><span></span><span></span>
+  </div>
+<ul class="nav-links" [class.open]="menuOpen">
+  <li><a routerLink="/admin/addTopics" id="addTopics" routerLinkActive="active" (click)="debug()" (click)="menuOpen=false">Temas</a></li>
+  <li><a routerLink="/admin/addQuestions" id="addQuestions" routerLinkActive="active2" (click)="debug()" (click)="menuOpen=false">Preguntas</a></li>
+  <li><a routerLink="/main/Examen" id="Examen" routerLinkActive="active" (click)="menuOpen=false">Examen</a></li>
+  <li><a routerLink="/main/Resultados" id="Resultados" routerLinkActive="active" (click)="menuOpen=false">Resultados</a></li>
+
+  <!-- Racha -->
+  <!-- <li>
+    <div class="racha">
+      <i class="fa-solid fa-fire" ></i> 
+      {{ racha }} 
+    </div>
+  </li> -->
+
+  <!-- Imagen de perfil -->
+  <!-- <li>
+    <div class="perfil">
+      <img [src]="user?.photoURL || '../../assets/omar.jpg'" alt="Perfil" class="perfil-img">
+    </div>
+  </li> -->
+
+  <!-- Cerrar sesión -->
+  <li>
+    <a routerLinkActive="active" (click)="logout(); menuOpen=false">Cerrar Sesión</a>
+  </li>
+</ul>
+
+</nav>

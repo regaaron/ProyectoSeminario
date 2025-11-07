@@ -40,9 +40,11 @@ export class AuthService {
     const result = await signInWithPopup(this.auth,provider);
     const user = result.user;
     //console.log('User logged in with Google:', user);
+    const tokenResult = await user.getIdTokenResult(true);
+    const role = tokenResult.claims['admin'] ? 'admin' : 'user';
     await this.saveUserToBackend(user); //llamamos a la función para guardar en backend
     await this.updateUserStreak(user.uid, await getIdToken(user)); //inicializamos el streak en 0
-    return user;
+    return {user,role};
   }
 
 
