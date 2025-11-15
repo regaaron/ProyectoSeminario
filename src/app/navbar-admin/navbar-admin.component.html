@@ -8,25 +8,12 @@
     <span></span><span></span><span></span>
   </div>
 <ul class="nav-links" [class.open]="menuOpen">
-  <li><a routerLink="/admin/addTopics" id="addTopics" routerLinkActive="active" (click)="debug()" (click)="menuOpen=false">Temas</a></li>
-  <li><a routerLink="/admin/addQuestions" id="addQuestions" routerLinkActive="active2" (click)="debug()" (click)="menuOpen=false">Preguntas</a></li>
-  <li><a routerLink="/main/Examen" id="Examen" routerLinkActive="active" (click)="menuOpen=false">Examen</a></li>
+  <li><a routerLink="/admin/addTopics" id="addTopics" routerLinkActive="active"  (click)="menuOpen=false">Temas</a></li>
+  <li><a routerLink="/admin/addQuestions" id="addQuestions" routerLinkActive="active2"  (click)="menuOpen=false">Preguntas</a></li>
+  <li><a routerLink="/admin/QuestionsAI" id="QuestionAI" routerLinkActive="active" (click)="menuOpen=false">PreguntasAI</a></li>
   <li><a routerLink="/main/Resultados" id="Resultados" routerLinkActive="active" (click)="menuOpen=false">Resultados</a></li>
 
-  <!-- Racha -->
-  <!-- <li>
-    <div class="racha">
-      <i class="fa-solid fa-fire" ></i> 
-      {{ racha }} 
-    </div>
-  </li> -->
-
-  <!-- Imagen de perfil -->
-  <!-- <li>
-    <div class="perfil">
-      <img [src]="user?.photoURL || '../../assets/omar.jpg'" alt="Perfil" class="perfil-img">
-    </div>
-  </li> -->
+ 
 
   <!-- Cerrar sesión -->
   <li>

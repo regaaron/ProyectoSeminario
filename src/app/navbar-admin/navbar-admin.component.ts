@@ -22,10 +22,7 @@ menuOpen = false;
   
   }
 
-  debug(){
-    console.log("click");
-  }
-
+ 
   logout() {
     this.authService.logOut()
       .then(() => {

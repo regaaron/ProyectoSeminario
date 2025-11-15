@@ -1,0 +1,19 @@
+<div class="table-container">
+
+    <table class="text-center">
+        <tr>
+            <th class="col-pregunta">Pregunta</th>
+            <th class="col-accion">Acción</th>
+        </tr>
+
+    <tr *ngFor="let pregunta of preguntas">
+        <td class="col-pregunta">{{ pregunta.enunciado }}</td>
+        <td class="col-accion">
+            <button class="btn btn-success" (click)="this.aceptarPregunta(pregunta.id_pregunta)">Agregar</button>
+            <button class="btn btn-info" (click)="this.editarPregunta(pregunta.id_pregunta)">Editar</button>
+            <button class="btn btn-danger" (click)="this.eliminar(pregunta.id_pregunta)">Eliminar</button>
+        </td>
+    </tr>
+        
+</table>
+</div>
