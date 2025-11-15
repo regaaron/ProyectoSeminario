@@ -14,6 +14,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AddTopicsComponent } from './add-topics/add-topics.component';
 import { AddQuestionsComponent } from './add-questions/add-questions.component';
 import { adminGuard } from './guards/admin.guard';
+import { QuestionAIComponent } from './question-ai/question-ai.component';
 
 
 export const routes: Routes = [
@@ -43,6 +44,7 @@ export const routes: Routes = [
             {path: '',redirectTo: 'addTopics',pathMatch: 'full'},
             {path: 'addTopics',component: AddTopicsComponent},
             {path: 'addQuestions',component: AddQuestionsComponent},
+            {path: 'QuestionsAI',component: QuestionAIComponent},
         ]
     },
     
