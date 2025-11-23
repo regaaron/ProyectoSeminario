@@ -1,0 +1,125 @@
+<div class="background-grid">
+  <!-- Overlay de carga -->
+  <div class="loading-overlay" *ngIf="isCargando">
+    <div class="spinner"></div>
+    <div class="loading-text">
+      Cargando pregunta diaria…
+    </div>
+  </div>
+
+  <!-- ⚠️ Mensaje cuando ya se contestó la daily -->
+  <div class="examen-container" *ngIf="bloqueada">
+    <div class="pregunta-header">
+      <h2 class="pregunta-titulo">Pregunta diaria contestada ✅</h2>
+      <span class="seleccion-tipo">Bloqueada</span>
+    </div>
+    <p>
+      Ya contestaste tu pregunta diaria de hoy.
+      <br>
+      Podrás responder una nueva en:
+    </p>
+    <h3>{{ countdownText }}</h3>
+  </div>
+
+  <!-- Vista de la pregunta -->
+  <div class="examen-container" *ngIf="!isFinalizado && examen.length > 0">
+    <div
+      *ngFor="let pregunta of [examen[0]]; trackBy: trackByPregunta"
+      [@fadeSlide]
+    >
+      <div class="pregunta-header">
+        <h2 class="pregunta-titulo">
+          Pregunta diaria: {{ pregunta.pregunta_enunciado }}
+        </h2>
+        <span class="seleccion-tipo">Selección única</span>
+      </div>
+
+      <!-- Feedback correcta/incorrecta -->
+      <div
+        class="feedback"
+        *ngIf="showFeedback"
+        [class.ok]="feedbackCorrecta"
+        [class.error]="!feedbackCorrecta"
+      >
+        <div>
+          {{ feedbackCorrecta ? '¡Respuesta correcta!' : 'Respuesta incorrecta' }}
+        </div>
+        <div *ngIf="!feedbackCorrecta && feedbackRespuestaCorrectaTexto">
+          La correcta era:
+          <strong>{{ feedbackRespuestaCorrectaTexto }}</strong>
+        </div>
+      </div>
+
+      <div class="respuestas-grid">
+        <div
+          *ngFor="let respuesta of pregunta.respuestas"
+          class="respuesta-opcion-card"
+          [ngClass]="{
+            'seleccionada':
+              isRespuestaSeleccionada(pregunta.id_pregunta, respuesta.id_respuesta),
+            'correcta':
+              showFeedback &&
+              esRespuestaCorrecta(pregunta, respuesta) &&
+              isRespuestaSeleccionada(pregunta.id_pregunta, respuesta.id_respuesta),
+            'incorrecta':
+              showFeedback &&
+              !esRespuestaCorrecta(pregunta, respuesta) &&
+              isRespuestaSeleccionada(pregunta.id_pregunta, respuesta.id_respuesta),
+            'verdadera':
+              showFeedback &&
+              esRespuestaCorrecta(pregunta, respuesta) &&
+              !isRespuestaSeleccionada(pregunta.id_pregunta, respuesta.id_respuesta)
+          }"
+          (click)="
+            seleccionarRespuesta(
+              pregunta.id_pregunta,
+              respuesta.id_respuesta,
+              pregunta,
+              respuesta
+            )
+          "
+        >
+          <input
+            type="radio"
+            [id]="'r' + respuesta.id_respuesta"
+            [name]="'pregunta' + pregunta.id_pregunta"
+            class="respuesta-radio"
+            [checked]="
+              isRespuestaSeleccionada(
+                pregunta.id_pregunta,
+                respuesta.id_respuesta
+              )
+            "
+          />
+
+          <label [for]="'r' + respuesta.id_respuesta" class="respuesta-label">
+            {{ respuesta.respuesta_texto }}
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer: sólo mostramos progreso simple -->
+    <div class="footer-navegacion">
+      <div class="progreso">
+        Progreso
+        <span class="progreso-texto">
+          {{ answeredQuestionsCount }} de {{ examen.length }} respondida
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resultados de la pregunta diaria -->
+  <div class="examen-container" *ngIf="isFinalizado">
+    <div class="pregunta-header">
+      <h2 class="pregunta-titulo">Resultado de la pregunta diaria</h2>
+      <span class="seleccion-tipo">Resumen</span>
+    </div>
+    <div class="resultados">
+      <p>Correctas: <strong>{{ resultadoCorrectas }}</strong></p>
+      <p>Puntaje: <strong>{{ resultadoPuntaje }}%</strong></p>
+    </div>
+    <!-- Aquí puedes poner un botón de volver a Inicio/Temas si quieres -->
+  </div>
+</div>

@@ -15,6 +15,7 @@ import { AddTopicsComponent } from './add-topics/add-topics.component';
 import { AddQuestionsComponent } from './add-questions/add-questions.component';
 import { adminGuard } from './guards/admin.guard';
 import { QuestionAIComponent } from './question-ai/question-ai.component';
+import { DailyQuestionComponent } from './daily-question/daily-question.component';
 
 
 export const routes: Routes = [
@@ -23,9 +24,11 @@ export const routes: Routes = [
     { path: 'landing-page', component: LandingPageComponent },
     { path: 'SingUp', component: SingUpComponent },
     { path: 'recoverpassword', component: RecoverpasswordComponent },
+    { path: 'PreguntaDiaria', component: DailyQuestionComponent },
+
 
     { path: 'main', component: MainComponentComponent,
-        
+
         canActivate: [authGuard], // 🔒 Protegido
         children:[
             {path: '', redirectTo: 'Inicio', pathMatch: 'full'}, // Redirect to Inicio by default
@@ -34,6 +37,7 @@ export const routes: Routes = [
             // Rutas para Examen que aceptan tema y subtema (subtema opcional)
             {path: 'Examen/:tema', component: ExamenComponent},
             {path: 'Examen/:tema/:sub', component: ExamenComponent},
+            { path: 'PreguntaDiaria', component: DailyQuestionComponent },
             {path: 'Resultados',component: ResultadosComponent},
         ]
     },/// Assuming Navbar is part of the landing page
@@ -47,6 +51,6 @@ export const routes: Routes = [
             {path: 'QuestionsAI',component: QuestionAIComponent},
         ]
     },
-    
+
     { path: '**', pathMatch: 'full', redirectTo: 'landing-page' }
 ];

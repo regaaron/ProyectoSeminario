@@ -3,6 +3,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'firebase/auth';
+import { DailyService } from '../services/daily.service';
 
 import { driver } from "driver.js";
 import "driver.js/dist/driver.css";
@@ -19,9 +20,10 @@ export class NavbarComponent implements AfterViewInit{
   menuOpen = false;
   racha: number = 0;
   user: User | null = null;
+  dailyAvailable = false;
   constructor(private authService: AuthService, private router: Router,private http: HttpClient) { }
   ngAfterViewInit(): void {
-    
+
     const driveObj = driver({
       showProgress: true,
       steps:[
@@ -59,7 +61,7 @@ export class NavbarComponent implements AfterViewInit{
         }
       ]
     });
-    
+
     driveObj.drive();
   }
 
@@ -74,11 +76,36 @@ export class NavbarComponent implements AfterViewInit{
   }
 
   ngOnInit(){
-    this.getRacha(this.authService.currentUser?.uid!);
-    this.user=this.authService.currentUser
+    this.user = this.authService.currentUser;
 
-
+    const uid = this.user?.uid;
+    if (uid) {
+      this.getRacha(uid);
+      this.checkDailyQuestion(uid); // ✅ nuevo
+    }
   }
+
+  checkDailyQuestion(uid: string) {
+    const key = `dailyQuestionTime_${uid}`;
+    const lastTimestamp = localStorage.getItem(key);
+
+    if (!lastTimestamp) {
+      // Nunca ha contestado → habilitar pregunta diaria
+      this.dailyAvailable = true;
+      return;
+    }
+
+    const lastDate = new Date(lastTimestamp);
+    const now = new Date();
+
+    const diffMs = now.getTime() - lastDate.getTime();
+    const diffHours = diffMs / (1000 * 60 * 60);
+
+    // Si han pasado 24 horas → habilitar
+    this.dailyAvailable = diffHours >= 24;
+  }
+
+
 
   async getRacha(uid: string) {
     try {
