@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class PreguntasService {
 
 
-  private API_URL = 'http://localhost:3000/admin/preguntas';
+  private API_URL = 'https://egelpro-backend-production.up.railway.app/admin/preguntas';
   
     constructor(private http: HttpClient) { }
   

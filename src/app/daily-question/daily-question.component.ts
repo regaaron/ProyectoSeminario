@@ -70,7 +70,7 @@ export class DailyQuestionComponent implements OnDestroy {
     verificarDisponibilidad(): void {
     this.isCargando = true;
 
-    this.http.get(`http://localhost:3000/auth/daily/${this.uid}`)
+    this.http.get(`https://egelpro-backend-production.up.railway.app/auth/daily/${this.uid}`)
       .subscribe({
         next: (res: any) => {
           this.isCargando = false;
@@ -99,7 +99,7 @@ export class DailyQuestionComponent implements OnDestroy {
   obtenerPreguntaDiariaGenerica(): void {
     this.isCargando = true;
 
-    this.http.get('http://localhost:3000/examenes/daily')
+    this.http.get('https://egelpro-backend-production.up.railway.app/examenes/daily')
       .subscribe({
         next: (data: any) => {
           console.log('Pregunta diaria desde back:', data);
@@ -227,7 +227,7 @@ export class DailyQuestionComponent implements OnDestroy {
     this.isFinalizado = true;
 
     // 👇 avisar al back que ya contestó la daily
-    this.http.post('http://localhost:3000/auth/daily/complete', {
+    this.http.post('https://egelpro-backend-production.up.railway.app/auth/daily/complete', {
       uid: this.uid,
       preguntaId: this.examen[0]?.id_pregunta
     }).subscribe({

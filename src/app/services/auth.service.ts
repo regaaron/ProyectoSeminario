@@ -11,7 +11,7 @@ export class AuthService {
 
    currentUser: User | null = null; // 🔹 aquí guardamos el usuario actual
 
-   private apiUrl = 'http://localhost:3000/auth'; // tu backend Node
+   private apiUrl = 'https://egelpro-backend-production.up.railway.app/auth'; // tu backend Node
 
    //injectamos Auth y HttpClient auth para firebase y http para llamadas a api
   constructor(private auth: Auth, private http: HttpClient) {

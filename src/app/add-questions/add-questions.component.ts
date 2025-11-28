@@ -23,7 +23,7 @@ export class AddQuestionsComponent implements OnInit{
     }
   
     editarPregunta(id: number) {
-    this.http.get(`http://localhost:3000/admin/preguntas/${id}`).subscribe((resp: any) => {
+    this.http.get(`https://egelpro-backend-production.up.railway.app/admin/preguntas/${id}`).subscribe((resp: any) => {
   
       const pregunta = resp.pregunta;
       const respuestas = resp.respuestas;
@@ -99,7 +99,7 @@ export class AddQuestionsComponent implements OnInit{
   }
   
   actualizarPregunta(id: number, data: any) {
-    this.http.put(`http://localhost:3000/admin/preguntas/${id}`, data)
+    this.http.put(`https://egelpro-backend-production.up.railway.app/admin/preguntas/${id}`, data)
       .subscribe(resp => {
         Swal.fire("Actualizado", "La pregunta fue actualizada correctamente", "success");
         this.cargarPreguntas(); // refrescar tabla

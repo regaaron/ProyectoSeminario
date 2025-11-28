@@ -19,7 +19,7 @@ export interface Tema {
   providedIn: 'root'
 })
 export class TemasService {
-  private apiUrl = 'http://localhost:3000/api/temas';
+  private apiUrl = 'https://egelpro-backend-production.up.railway.app/api/temas';
 
   constructor(private http: HttpClient) {}
 

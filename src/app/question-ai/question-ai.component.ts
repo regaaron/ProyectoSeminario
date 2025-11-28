@@ -22,7 +22,7 @@ export class QuestionAIComponent implements OnInit{
   }
 
   editarPregunta(id: number) {
-  this.http.get(`http://localhost:3000/admin/preguntasai/${id}`).subscribe((resp: any) => {
+  this.http.get(`https://egelpro-backend-production.up.railway.app/admin/preguntasai/${id}`).subscribe((resp: any) => {
 
     const pregunta = resp.pregunta;
     const respuestas = resp.respuestas;
@@ -98,7 +98,7 @@ export class QuestionAIComponent implements OnInit{
 }
 
 actualizarPregunta(id: number, data: any) {
-  this.http.put(`http://localhost:3000/admin/preguntasai/${id}`, data)
+  this.http.put(`https://egelpro-backend-production.up.railway.app/admin/preguntasai/${id}`, data)
     .subscribe(resp => {
       Swal.fire("Actualizado", "La pregunta fue actualizada correctamente", "success");
       this.cargarPreguntas(); // refrescar tabla
@@ -157,7 +157,7 @@ aceptarPregunta(id: number) {
     confirmButtonText: "Aceptar"
   }).then(result => {
     if (result.isConfirmed) {
-      this.http.post(`http://localhost:3000/admin/preguntasai/aceptar/${id}`, {})
+      this.http.post(`https://egelpro-backend-production.up.railway.app/admin/preguntasai/aceptar/${id}`, {})
         .subscribe(resp => {
           Swal.fire("Listo", "La pregunta fue aceptada", "success");
           this.cargarPreguntas();

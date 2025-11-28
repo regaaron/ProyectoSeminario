@@ -240,19 +240,31 @@ export class ExamenComponent {
     return item.id_pregunta; // o cualquier id único de la pregunta
   }
 
-  finalizarExamen(): void {
-    // Calcular resultados
-    let correctas = 0;
-    for (const q of this.examen) {
-      const rid = this.userAnswers[q.id_pregunta];
-      if (rid == null) continue;
-      const resp = (q.respuestas || []).find((r: any) => Number(r.id_respuesta) === Number(rid));
-      if (this.esRespuestaCorrecta(q, resp)) correctas++;
+finalizarExamen(): void {
+  let correctas = 0;
+  
+  for (const q of this.examen) {
+    const rid = this.userAnswers[q.id_pregunta];
+    if (rid == null) continue;
+    
+    // Buscar la respuesta seleccionada - MEJORADO
+    const resp = (q.respuestas || []).find((r: any) => {
+      // Intentar diferentes formas de comparación
+      return Number(r.id_respuesta) === Number(rid) || 
+             r.id_respuesta === rid ||
+             String(r.id_respuesta) === String(rid);
+    });
+    
+    if (resp && this.esRespuestaCorrecta(q, resp)) {
+      correctas++;
     }
-    this.resultadoCorrectas = correctas;
-    this.resultadoPuntaje = this.examen.length > 0 ? Math.round((correctas * 100) / this.examen.length) : 0;
-    this.isFinalizado = true;
   }
+  
+  console.log('Examen finalizado. Correctas:', correctas, 'de', this.examen.length);
+  this.resultadoCorrectas = correctas;
+  this.resultadoPuntaje = this.examen.length > 0 ? Math.round((correctas * 100) / this.examen.length) : 0;
+  this.isFinalizado = true;
+}
 
   regenerarExamen(): void {
     this.isFinalizado = false;

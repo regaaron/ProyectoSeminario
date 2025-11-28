@@ -27,7 +27,7 @@ export class DailyService {
   }
 
   getDailyQuestion() {
-    return this.http.get('http://localhost:3000/daily/question');
+    return this.http.get('https://egelpro-backend-production.up.railway.app/daily/question');
   }
 
 

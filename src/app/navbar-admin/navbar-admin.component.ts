@@ -39,7 +39,7 @@ menuOpen = false;
 
   async getRacha(uid: string) {
     try {
-      const res: any = await this.http.get(`http://localhost:3000/auth/racha/${uid}`).toPromise();
+      const res: any = await this.http.get(`https://egelpro-backend-production.up.railway.app/auth/racha/${uid}`).toPromise();
       this.racha = res.racha;
       console.log('Racha obtenida:', this.racha);
     } catch(error) {

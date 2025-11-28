@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AdminPreguntasService {
 
-  private API_URL = 'http://localhost:3000/admin/preguntasai';
+  private API_URL = 'https://egelpro-backend-production.up.railway.app/admin/preguntasai';
 
   constructor(private http: HttpClient) { }
 

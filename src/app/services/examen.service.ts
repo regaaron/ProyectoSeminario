@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ExamenService {
-  private apiUrl = 'http://localhost:3000/examenes'
+  private apiUrl = 'https://egelpro-backend-production.up.railway.app/examenes'
   constructor(private http: HttpClient) { }
 
   getExamenes(idExamen: number): Observable<any>{
