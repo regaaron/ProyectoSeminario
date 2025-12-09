@@ -56,6 +56,14 @@
               ],
               "outputHashing": "all"
             },
+            "capacitor": {
+              "budgets": [],
+              "outputHashing": "all",
+              "optimization": true,
+              "sourceMap": false,
+              "ssr": false,
+              "prerender": false
+            },
             "development": {
               "optimization": false,
               "extractLicenses": false,
